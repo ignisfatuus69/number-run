@@ -10,6 +10,7 @@ public class Obstacle : MonoBehaviour
 
     public void SetNumberValue(int number)
     {
+        Debug.Log("test");
         this.numberValue = number;
         numberValueText.text = numberValue.ToString();
     }

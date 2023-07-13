@@ -218,16 +218,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ca34ef849bc8244bc816cce7b4f9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimeInterval: 0
-  obstaclePrefab: {fileID: 0}
+  spawnTimeInterval: 1
+  obstaclePrefab: {fileID: 6960275251951196749, guid: 64eb3ce2669b752408b4e8b875ea1b83,
+    type: 3}
   spawnPositions:
-  - {x: -1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 1, y: 0}
+  - {x: -1.5, y: 0.5}
+  - {x: 0, y: 0.5}
+  - {x: 1.5, y: 0.5}
   playerPosition: {fileID: 1230993631}
   additiveText: {fileID: 1433029595}
   maxRange: 5
-  obstacleOffsetFromPlayer: 0
+  obstacleOffsetFromPlayer: 5
 --- !u!4 &84042020
 Transform:
   m_ObjectHideFlags: 0
@@ -348,36 +349,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &716301562
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 716301563}
-  m_Layer: 0
-  m_Name: Obstacle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &716301563
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716301562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.04}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,8 +689,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433029594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.04}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_LocalPosition: {x: 0, y: 0, z: -17}
+  m_LocalScale: {x: 0.0135, y: 0.0135, z: 0.0135}
   m_Children: []
   m_Father: {fileID: 2112467842}
   m_RootOrder: 0
@@ -727,7 +698,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 138.8831, y: 67.2228}
+  m_SizeDelta: {x: 135, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1913719058
 GameObject:

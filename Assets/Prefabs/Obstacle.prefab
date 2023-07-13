@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 4
 --- !u!1 &1054019713066655463
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,8 +107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054019713066655463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.04}
-  m_LocalScale: {x: 1, y: 1, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.25}
   m_Children:
   - {fileID: 2243740393564193691}
   m_Father: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c1348ac26233c46aa3ebae36640424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberValue: 0
+  numberValue: 4
   numberValueText: {fileID: 2079896331589132754}
 --- !u!1 &8991960834280347435
 GameObject:
