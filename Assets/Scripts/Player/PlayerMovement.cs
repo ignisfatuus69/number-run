@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
             Direction = Vector3.ClampMagnitude(Direction, 1f);
 
-            this.transform.position = new Vector3(0f, 0f, Mathf.SmoothStep(this.transform.position.z, +100f, Time.deltaTime * forwardSpeed));
+            this.transform.position += new Vector3(0f, 0f,  Time.deltaTime * forwardSpeed);
         }
     }
     
