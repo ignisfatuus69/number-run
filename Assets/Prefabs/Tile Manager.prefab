@@ -45,9 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefabs:
   - {fileID: 230097372360070495, guid: 4441cd401987cfc42b4472e2b8fa8056, type: 3}
-  - {fileID: 230097372360070495, guid: 4441cd401987cfc42b4472e2b8fa8056, type: 3}
+  - {fileID: 230097372360070495, guid: 49401af52f8644a0ebd89e91addc29aa, type: 3}
   - {fileID: 230097372360070495, guid: 4441cd401987cfc42b4472e2b8fa8056, type: 3}
   zSpawn: 0
   tileLength: 8
-  numberOfTiles: 5
+  numberOfTiles: 7
   playerTransform: {fileID: 0}
