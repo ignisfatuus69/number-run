@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquationChecker : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Text textObject;
     public int currentSum { get; private set; } = 0;
     public int correctAnswers { get; private set; } = 0;
 
@@ -24,6 +26,7 @@ public class EquationChecker : MonoBehaviour
     public void CheckEquation(int additive, int obstacleNumberValue)
     {
         currentSum += additive;
+        textObject.text = currentSum.ToString();
         if (currentSum==obstacleNumberValue)
         {
             correctAnswers += 1;

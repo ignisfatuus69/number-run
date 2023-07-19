@@ -11,13 +11,14 @@ public class Obstacle : MonoBehaviour
 
     public void SetNumberValue(int number)
     {
-        Debug.Log("test");
         this.numberValue = number;
         numberValueText.text = numberValue.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("tesst");
+        this.gameObject.SetActive(false);
         other.GetComponentInChildren<EquationChecker>().CheckEquation(this.additive, this.numberValue);
         Debug.Log("Checking answers");
     }

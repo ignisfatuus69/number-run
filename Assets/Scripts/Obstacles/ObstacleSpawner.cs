@@ -67,7 +67,7 @@ public class ObstacleSpawner : MonoBehaviour
             else
             {
                 int numberToAssignIndex = Random.Range(0, numbersToAssign.Count);
-                currentSpawningObstacles[i].SetNumberValue(numbersToAssign[numberToAssignIndex]);
+                currentSpawningObstacles[i].SetNumberValue(equationChecker.currentSum + numbersToAssign[numberToAssignIndex]);
                 numbersToAssign.RemoveAt(numberToAssignIndex);
             }
         }
