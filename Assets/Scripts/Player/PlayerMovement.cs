@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private bool isMoving;
+    public bool isMoving { get; private set; } = false;
+    public float distanceTravelled { get; private set; } = 0;
     private Vector3 Direction;
     public Rigidbody rigidBody;
     [SerializeField] private float sideMovementSpeed;
@@ -40,10 +41,9 @@ public class PlayerMovement : MonoBehaviour
       
             if (isMoving)
             {
-                Vector3 displacement = new Vector3(Direction.x,0f,0f) * Time.fixedDeltaTime;
-            
-                
-                    rigidBody.velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSensitivity,0f,0f) + displacement;
+            Vector3 displacement = new Vector3(Direction.x,0f,0f) * Time.fixedDeltaTime;
+            distanceTravelled += forwardSpeed * Time.deltaTime;
+            rigidBody.velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSensitivity,0f,0f) + displacement;
             }
             else
             {

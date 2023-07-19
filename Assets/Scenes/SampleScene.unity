@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.35837027, g: 0.7536174, b: 0.9684223, a: 1}
+  m_IndirectSpecularColor: {r: 0.35906637, g: 0.75426424, b: 0.9684448, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -205,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &84042019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,17 +218,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ca34ef849bc8244bc816cce7b4f9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimeInterval: 1
+  distanceTravelledToSpawn: 10
   obstaclePrefab: {fileID: 6960275251951196749, guid: 64eb3ce2669b752408b4e8b875ea1b83,
     type: 3}
   spawnPositions:
   - {x: -1.5, y: 0.5}
   - {x: 0, y: 0.5}
   - {x: 1.5, y: 0.5}
-  playerPosition: {fileID: 1230993631}
+  playerMovement: {fileID: 2124516365}
   additiveText: {fileID: 1433029595}
-  maxRange: 5
-  obstacleOffsetFromPlayer: 5
+  maxAdditiveRange: 5
+  minAdditiveRange: 1
+  obstacleOffsetFromPlayer: 10
 --- !u!4 &84042020
 Transform:
   m_ObjectHideFlags: 0
@@ -889,6 +890,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2124516365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1142092718869593003, guid: fdcb009ef01cf274bad72714447fcddc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1130999279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dcbe30f7583db438d8cea94da26771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6444059287845215894
 PrefabInstance:
   m_ObjectHideFlags: 0
