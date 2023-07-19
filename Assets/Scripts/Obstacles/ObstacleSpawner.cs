@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ObstacleSpawner : MonoBehaviour
 {
+    [SerializeField] EquationChecker equationChecker;
     [SerializeField] float spawnTimeInterval=3;
     [SerializeField] Obstacle obstaclePrefab;
     [SerializeField] Vector2[] spawnPositions;
@@ -14,6 +15,7 @@ public class ObstacleSpawner : MonoBehaviour
     private bool isOnSpawnCooldown = false;
     private List<Obstacle> currentSpawningObstacles = new List<Obstacle>();
     private List<Obstacle> allSpawnedObstacles = new List<Obstacle>();
+    private List<int> numbersToAssign = new List<int>();
     private int currentSum = 0;
     // Start is called before the first frame update
     private void Start()
@@ -24,11 +26,14 @@ public class ObstacleSpawner : MonoBehaviour
     private void CreateEquationObstacle()
     {
         int randomAdditive = Random.Range(1, maxRange+1);
+        //fill the list w/ 10 choices of additives to assign
+
         //Generating all 3 obstacles
         for (int i = 0; i < 3; i++)
         {
             Obstacle newObstacle = Instantiate(obstaclePrefab, new Vector3(spawnPositions[i].x, spawnPositions[i].y,
                 playerMovement.transform.position.z + obstacleOffsetFromPlayer),Quaternion.identity);
+            newObstacle.additive = randomAdditive;
             currentSpawningObstacles.Add(newObstacle);
             allSpawnedObstacles.Add(newObstacle);
         }
@@ -44,16 +49,31 @@ public class ObstacleSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, currentSpawningObstacles.Count);
         Debug.Log("THE RANDOM INDEX IS " + randomIndex);
         //Setting the correct answer
-        currentSpawningObstacles[randomIndex].SetNumberValue(randomAdditive);
-        //Setting wrong answers for the rest of the obstacles
-        for (int i = 0; i < currentSpawningObstacles.Count; i++)
-        {
-            if (currentSpawningObstacles[i].numberValue <= 0 && i % 2 == 0) currentSpawningObstacles[i].SetNumberValue(randomAdditive - i);
-            if (currentSpawningObstacles[i].numberValue <= 0 && i % 2 != 0) currentSpawningObstacles[i].SetNumberValue(randomAdditive + i);
-        }
-        currentSpawningObstacles.Clear();
+        currentSpawningObstacles[randomIndex].SetNumberValue(equationChecker.currentSum + randomAdditive);
         additiveText.text = ("+" + randomAdditive.ToString());
         additiveText.transform.position = new Vector3(0, 1, playerMovement.transform.position.z + obstacleOffsetFromPlayer);
+        //Setting wrong answers for the rest of the obstacles
+        randomAdditive -= 5;
+        for (int i = 0; i < 10; i++)
+        {
+            randomAdditive += 1;
+            numbersToAssign.Add(randomAdditive);
+        }
+        //Remove correct answer from list
+        numbersToAssign.Remove(currentSpawningObstacles[randomIndex].numberValue);
+        for (int i = 0; i < currentSpawningObstacles.Count; i++)
+        {
+            if (i == randomIndex) continue;
+            else
+            {
+                int numberToAssignIndex = Random.Range(0, numbersToAssign.Count);
+                currentSpawningObstacles[i].SetNumberValue(numbersToAssign[numberToAssignIndex]);
+                numbersToAssign.RemoveAt(numberToAssignIndex);
+            }
+        }
+
+        currentSpawningObstacles.Clear();
+        numbersToAssign.Clear();
     }
 
     IEnumerator SpawnObstacle()

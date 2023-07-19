@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Coin : MonoBehaviour
 {
-    private Score ScoreText;
+    private EquationChecker ScoreText;
 
     private void Start()
     {
-        ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Score>();
+        ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<EquationChecker>();
     }
 
     private void Update()
@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ScoreText.ScorePlusOne();
+        //ScoreText.ScorePlusOne();
         Destroy(gameObject);
     }
 }
