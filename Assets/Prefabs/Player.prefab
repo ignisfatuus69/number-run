@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1142092718869593002}
   - component: {fileID: 1142092718869593003}
+  - component: {fileID: 6064967195387632289}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -44,10 +45,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dcbe30f7583db438d8cea94da26771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 0}
+  rigidBody: {fileID: 4537855885699978980}
   sideMovementSpeed: 10
   swipeSensitivity: 100
   forwardSpeed: 1
+--- !u!95 &6064967195387632289
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142092718869593001}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 357b460deae07d640a7773bdc54f05e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8991183041632611659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,6 +155,12 @@ PrefabInstance:
 --- !u!4 &7412682952467869231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1880317207959290724, guid: c4cad50aa03bbca42938fe318344950b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8991183041632611659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &4537855885699978980 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4773440346842938287, guid: c4cad50aa03bbca42938fe318344950b,
     type: 3}
   m_PrefabInstance: {fileID: 8991183041632611659}
   m_PrefabAsset: {fileID: 0}
