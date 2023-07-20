@@ -1276,6 +1276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1588859533809500397, guid: 5f978c76603aa214c92cfb629618c0fe,
         type: 3}
+      propertyPath: correctSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: eb3b111eb9e13c245b077f1e57bbf5ab, type: 3}
+    - target: {fileID: 1588859533809500397, guid: 5f978c76603aa214c92cfb629618c0fe,
+        type: 3}
       propertyPath: textObject
       value: 
       objectReference: {fileID: 2070366572}
@@ -1373,6 +1378,31 @@ PrefabInstance:
       propertyPath: equationChecker
       value: 
       objectReference: {fileID: 1126221956}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[0].x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[0].y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[1].y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[2].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[2].y
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2308b2bceb93fa4469fd467df91ea128, type: 3}
 --- !u!1001 &6444059287845215894

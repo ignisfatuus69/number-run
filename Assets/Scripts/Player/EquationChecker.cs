@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EquationChecker : MonoBehaviour
 {
+    [SerializeField] AudioClip correctSFX;
     [SerializeField] GameManager gameManager;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] Text textObject;
@@ -30,6 +31,7 @@ public class EquationChecker : MonoBehaviour
         if (currentSum==obstacleNumberValue)
         {
             correctAnswers += 1;
+            AudioManager.Instance.PlayOneShot(correctSFX);
         }
         else
         {
