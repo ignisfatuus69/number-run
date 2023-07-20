@@ -1360,6 +1360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
         type: 3}
+      propertyPath: additiveText
+      value: 
+      objectReference: {fileID: 2070366572}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 2124516365}

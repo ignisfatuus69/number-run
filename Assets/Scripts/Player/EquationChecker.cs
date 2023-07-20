@@ -26,7 +26,7 @@ public class EquationChecker : MonoBehaviour
     public void CheckEquation(int additive, int obstacleNumberValue)
     {
         currentSum += additive;
-        textObject.text = currentSum.ToString();
+       // textObject.text = currentSum.ToString();
         if (currentSum==obstacleNumberValue)
         {
             correctAnswers += 1;

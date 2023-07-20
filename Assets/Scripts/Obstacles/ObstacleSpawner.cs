@@ -50,8 +50,8 @@ public class ObstacleSpawner : MonoBehaviour
         Debug.Log("THE RANDOM INDEX IS " + randomIndex);
         //Setting the correct answer
         currentSpawningObstacles[randomIndex].SetNumberValue(equationChecker.currentSum + randomAdditive);
-        additiveText.text = ("+" + randomAdditive.ToString());
-        additiveText.transform.position = new Vector3(0, 1, playerMovement.transform.position.z + obstacleOffsetFromPlayer);
+        additiveText.text = (equationChecker.currentSum + "+" + randomAdditive.ToString());
+        //additiveText.transform.position = new Vector3(0, 1, playerMovement.transform.position.z + obstacleOffsetFromPlayer);
         //Setting wrong answers for the rest of the obstacles
         randomAdditive -= 5;
         for (int i = 0; i < 10; i++)
