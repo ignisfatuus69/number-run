@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 230097372360070495, guid: 4441cd401987cfc42b4472e2b8fa8056, type: 3}
   - {fileID: 230097372360070495, guid: 49401af52f8644a0ebd89e91addc29aa, type: 3}
   - {fileID: 230097372360070495, guid: 4441cd401987cfc42b4472e2b8fa8056, type: 3}
+  - {fileID: 230097372360070495, guid: 8761893e94ce764469e07e6164137d8a, type: 3}
   zSpawn: 0
   tileLength: 8
   numberOfTiles: 7
