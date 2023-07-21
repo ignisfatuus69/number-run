@@ -9,9 +9,9 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] Obstacle obstaclePrefab;
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] Text additiveText;
     [SerializeField] int maxRange = 5;
     [SerializeField] float obstacleOffsetFromPlayer;
+    public Text additiveText;
     private bool isOnSpawnCooldown = false;
     private List<Obstacle> currentSpawningObstacles = new List<Obstacle>();
     private List<Obstacle> allSpawnedObstacles = new List<Obstacle>();
@@ -27,7 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         int randomAdditive = Random.Range(1, maxRange+1);
         //fill the list w/ 10 choices of additives to assign
-
+        equationChecker.currentAdditive = randomAdditive;
         //Generating all 3 obstacles
         for (int i = 0; i < 3; i++)
         {

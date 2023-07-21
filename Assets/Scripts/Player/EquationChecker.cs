@@ -11,17 +11,13 @@ public class EquationChecker : MonoBehaviour
     [SerializeField] Text textObject;
     public int currentSum { get; private set; } = 0;
     public int correctAnswers { get; private set; } = 0;
-
-    // Start is called before the first frame update
-    void Start()
+    public int currentAdditive;
+    public void AddSum(int additive)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentSum += additive;
+        //cap sum
+        if (currentSum < 0) currentSum = 0;
+        textObject.text = (currentSum + "+" + currentAdditive.ToString());
     }
 
     public void CheckEquation(int additive, int obstacleNumberValue)
