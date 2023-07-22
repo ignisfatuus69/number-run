@@ -20,10 +20,10 @@ public class EquationChecker : MonoBehaviour
         textObject.text = (currentSum + "+" + currentAdditive.ToString());
     }
 
-    public void CheckEquation(int additive, int obstacleNumberValue)
+    public void CheckEquation(int additive, int obstacleNumberValue, int obstacleAdditive)
     {
         currentSum += additive;
-       // textObject.text = currentSum.ToString();
+        textObject.text = currentSum.ToString();
         if (currentSum==obstacleNumberValue)
         {
             correctAnswers += 1;

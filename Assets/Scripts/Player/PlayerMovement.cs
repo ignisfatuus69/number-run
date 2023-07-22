@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool isMoving { get; private set; } = false;
+    public bool isMovingSideward { get; private set; } = false;
     public float distanceTravelled { get; private set; } = 0;
     private Vector3 Direction;
     public Rigidbody rigidBody;
@@ -17,29 +17,29 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            isMoving = true;
+            isMovingSideward = true;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            isMoving = false;
+            isMovingSideward = false;
         }
 
-        if (isMoving)
-        {
 
+        if (isMovingSideward)
+        {
             Direction.x = Mathf.Lerp(Direction.x, Input.GetAxis("Mouse X"), Time.deltaTime * sideMovementSpeed);
 
             Direction = Vector3.ClampMagnitude(Direction, 1f);
-
-            this.transform.position += new Vector3(0f, 0f,  Time.deltaTime * forwardSpeed);
         }
+            this.transform.position += new Vector3(0f, 0f,  Time.deltaTime * forwardSpeed);
+        
     }
     
     private void FixedUpdate()
     {
       
-            if (isMoving)
+            if (isMovingSideward)
             {
             Vector3 displacement = new Vector3(Direction.x,0f,0f) * Time.fixedDeltaTime;
             distanceTravelled += forwardSpeed * Time.deltaTime;

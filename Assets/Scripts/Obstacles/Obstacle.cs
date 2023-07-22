@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour
     {
         Debug.Log("tesst");
         this.gameObject.SetActive(false);
-        other.GetComponentInChildren<EquationChecker>().CheckEquation(this.additive, this.numberValue);
+        other.GetComponentInChildren<EquationChecker>().CheckEquation(this.additive, this.numberValue,this.additive);
         Debug.Log("Checking answers");
     }
 }

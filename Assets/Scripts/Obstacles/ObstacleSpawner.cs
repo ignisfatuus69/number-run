@@ -17,6 +17,7 @@ public class ObstacleSpawner : MonoBehaviour
     private List<Obstacle> allSpawnedObstacles = new List<Obstacle>();
     private List<int> numbersToAssign = new List<int>();
     private int currentSum = 0;
+    public int randomAdditive { get; private set; }
     // Start is called before the first frame update
     private void Start()
     {
@@ -25,7 +26,7 @@ public class ObstacleSpawner : MonoBehaviour
     }
     private void CreateEquationObstacle()
     {
-        int randomAdditive = Random.Range(1, maxRange+1);
+         randomAdditive = Random.Range(1, maxRange+1);
         //fill the list w/ 10 choices of additives to assign
         equationChecker.currentAdditive = randomAdditive;
         //Generating all 3 obstacles
@@ -80,19 +81,13 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.1f);
-            Debug.Log(Mathf.RoundToInt(playerMovement.distanceTravelled));
-            if (!playerMovement.isMoving || isOnSpawnCooldown) yield return null;
-            else
-            {
-                if (Mathf.RoundToInt(playerMovement.distanceTravelled) % 10 == 0)
-                {
+            yield return new WaitForSeconds(Random.Range(5,10));
                     CreateEquationObstacle();
                     Debug.Log("Spawn Obstacles");
                     isOnSpawnCooldown = true;
-                    StartCoroutine(SpawnCoolDown());
-                }
-            }
+                   // StartCoroutine(SpawnCoolDown());
+                
+            
         }
     }
 
@@ -100,7 +95,7 @@ public class ObstacleSpawner : MonoBehaviour
     IEnumerator SpawnCoolDown()
     {
         yield return new WaitForSeconds(0.5f);
-        isOnSpawnCooldown = false;
+      //  isOnSpawnCooldown = false;
     }
 
     //IEnumerator DestroyOldObstacles()
