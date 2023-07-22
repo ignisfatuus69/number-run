@@ -294,6 +294,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 120, y: -30, z: 0}
+--- !u!114 &871227941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+    type: 3}
+  m_PrefabInstance: {fileID: 4255693822352532028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ca34ef849bc8244bc816cce7b4f9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &934320660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1219,100 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dcbe30f7583db438d8cea94da26771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1323734505833721307
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1323734506425446318, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 2124516365}
+    - target: {fileID: 1323734506425446318, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: obstacleSpawner
+      value: 
+      objectReference: {fileID: 871227941}
+    - target: {fileID: 1323734506425446318, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: maxTimeSpawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323734506425446318, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: minTimeSpawnInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323734506425446318, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: obstacleOffsetFromPlayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977331798285855926, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: m_Name
+      value: Reset Power Up Spawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06afd4631df45d847ba60de57c958200, type: 3}
 --- !u!1001 &1588859532716902505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1378,6 +1484,11 @@ PrefabInstance:
       propertyPath: equationChecker
       value: 
       objectReference: {fileID: 1126221956}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: obstacleOffsetFromPlayer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
         type: 3}
       propertyPath: spawnPositions.Array.data[0].x

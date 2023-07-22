@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class ObstacleSpawner : MonoBehaviour
 {
+    public System.Action OnObstaclesSpawn; 
     [SerializeField] EquationChecker equationChecker;
     [SerializeField] float spawnTimeInterval=3;
     [SerializeField] Obstacle obstaclePrefab;
@@ -18,6 +20,7 @@ public class ObstacleSpawner : MonoBehaviour
     private List<int> numbersToAssign = new List<int>();
     private int currentSum = 0;
     public int randomAdditive { get; private set; }
+    public Vector3 nextSpawnPosition { get; private set; }
     // Start is called before the first frame update
     private void Start()
     {
@@ -38,6 +41,9 @@ public class ObstacleSpawner : MonoBehaviour
             currentSpawningObstacles.Add(newObstacle);
             allSpawnedObstacles.Add(newObstacle);
         }
+        nextSpawnPosition =  new Vector3(spawnPositions[1].x, spawnPositions[1].y,
+                playerMovement.transform.position.z + obstacleOffsetFromPlayer);
+        OnObstaclesSpawn.Invoke();
         //deleting old obstacles
         if (allSpawnedObstacles.Count >= 9)
         {

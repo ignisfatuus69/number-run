@@ -8,6 +8,11 @@ public class ResetPowerUp : MonoBehaviour
     [SerializeField] int min=5;
     [SerializeField] int max=20;
     [SerializeField] Text text;
+
+    private void OnEnable()
+    {
+        initializeDeductive();
+    }
     public void initializeDeductive()
     {
         deductive = Random.Range(min, max + 1);

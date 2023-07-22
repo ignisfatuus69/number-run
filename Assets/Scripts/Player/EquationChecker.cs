@@ -17,7 +17,7 @@ public class EquationChecker : MonoBehaviour
         currentSum += additive;
         //cap sum
         if (currentSum < 0) currentSum = 0;
-        textObject.text = (currentSum + "+" + currentAdditive.ToString());
+        textObject.text = (currentSum.ToString());
     }
 
     public void CheckEquation(int additive, int obstacleNumberValue, int obstacleAdditive)
