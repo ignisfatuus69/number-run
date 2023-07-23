@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.28009418, g: 0.59049106, b: 0.7620543, a: 1}
+  m_IndirectSpecularColor: {r: 0.28270707, g: 0.5940339, b: 0.7621765, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -776,7 +776,7 @@ PrefabInstance:
     - target: {fileID: 1142092718869593003, guid: fdcb009ef01cf274bad72714447fcddc,
         type: 3}
       propertyPath: swipeSensitivity
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1142092718869593003, guid: fdcb009ef01cf274bad72714447fcddc,
         type: 3}
@@ -808,6 +808,26 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4537855885699978980, guid: fdcb009ef01cf274bad72714447fcddc,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537855885699978980, guid: fdcb009ef01cf274bad72714447fcddc,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387800319604063780, guid: fdcb009ef01cf274bad72714447fcddc,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 7387800319604063780, guid: fdcb009ef01cf274bad72714447fcddc,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 2124516365}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdcb009ef01cf274bad72714447fcddc, type: 3}
 --- !u!1 &1180646454
