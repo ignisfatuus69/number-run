@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1142092718869593002}
   - component: {fileID: 1142092718869593003}
-  - component: {fileID: 7387800319604063780}
   - component: {fileID: 6064967195387632289}
   - component: {fileID: 3878430322693906611}
   m_Layer: 0
@@ -51,52 +50,6 @@ MonoBehaviour:
   sideMovementSpeed: 10
   swipeSensitivity: 100
   forwardSpeed: 1
---- !u!114 &7387800319604063780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1142092718869593001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460fff2ee39d0ea46b715736a6cbcb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  EVT_OnStartTouch:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1142092718869593003}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: MovePlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  EVT_OnEndTouch:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1142092718869593003}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: StopPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  EVT_OnHoldTouch:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!95 &6064967195387632289
 Animator:
   serializedVersion: 3
