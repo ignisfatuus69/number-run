@@ -3,24 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+
+[System.Serializable]
+public class OnObstaclePooled : UnityEvent<Obstacle> { };
+
+[System.Serializable]
+public class OnObstacleSpawned : UnityEvent<Obstacle> { };
 public class ObstacleSpawner : MonoBehaviour
 {
+
+    public OnObstacleSpawned EVT_OnObstacleSpawned;
+    public OnObstaclePooled EVT_OnObjectPooled;
+
+    [SerializeField] protected float poolTimer;
+
+    public List<Obstacle> currentSpawnedObjects { get; protected set; } = new List<Obstacle>();
+    public List<Obstacle> pooledObjects { get; protected set; } = new List<Obstacle>();
+
+    [SerializeField] protected Vector3 SpawnPosition;
+
+    public int totalSpawnsCount { get; private set; } = 0;
+    public int totalPooledCount { get; protected set; } = 0;
+
+
     public System.Action OnObstaclesSpawn; 
     [SerializeField] EquationChecker equationChecker;
-    [SerializeField] float spawnTimeInterval=3;
     [SerializeField] Obstacle obstaclePrefab;
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] int maxRange = 5;
     [SerializeField] float obstacleOffsetFromPlayer;
     public Text additiveText;
-    private bool isOnSpawnCooldown = false;
     private List<Obstacle> currentSpawningObstacles = new List<Obstacle>();
-    private List<Obstacle> allSpawnedObstacles = new List<Obstacle>();
     private List<int> numbersToAssign = new List<int>();
-    private int currentSum = 0;
     public int randomAdditive { get; private set; }
-    public Vector3 nextSpawnPosition { get; private set; }
+    public Vector3 nextPowerupPosition { get; private set; }
     // Start is called before the first frame update
     private void Start()
     {
@@ -35,24 +52,40 @@ public class ObstacleSpawner : MonoBehaviour
         //Generating all 3 obstacles
         for (int i = 0; i < 3; i++)
         {
-            Obstacle newObstacle = Instantiate(obstaclePrefab, new Vector3(spawnPositions[i].x, spawnPositions[i].y,
-                playerMovement.transform.position.z + obstacleOffsetFromPlayer),Quaternion.identity);
-            newObstacle.additive = randomAdditive;
-            currentSpawningObstacles.Add(newObstacle);
-            allSpawnedObstacles.Add(newObstacle);
-        }
-        nextSpawnPosition =  new Vector3(spawnPositions[1].x, spawnPositions[1].y,
-                playerMovement.transform.position.z + obstacleOffsetFromPlayer);
-        OnObstaclesSpawn.Invoke();
-        //deleting old obstacles
-        if (allSpawnedObstacles.Count >= 9)
-        {
-            for (int x = 0; x < 3; x++)
+            Obstacle obj;
+            if (pooledObjects.Count > 0)
             {
-                Destroy(allSpawnedObstacles[0].gameObject);
-                allSpawnedObstacles.Remove(allSpawnedObstacles[0]);
+                // get the last pooled object
+                obj = pooledObjects[0];
+                pooledObjects.RemoveAt(0);
+                obj.gameObject.SetActive(true);
+                currentSpawnedObjects.Add(obj);
+
             }
+            else
+            {
+                obj = Instantiate(obstaclePrefab);
+                currentSpawnedObjects.Add(obj);
+              //  SetPoolingInitializations(obj);
+            }
+            obj.additive = randomAdditive;
+            currentSpawningObstacles.Add(obj);
+            totalSpawnsCount += 1;
+            //Set Spawn Position
+            SpawnPosition = new Vector3(spawnPositions[i].x, spawnPositions[i].y,
+                playerMovement.transform.position.z + obstacleOffsetFromPlayer);
+            obj.transform.position = SpawnPosition;
+
+            EVT_OnObstacleSpawned.Invoke(obj);
         }
+
+        nextPowerupPosition =  new Vector3(spawnPositions[1].x, spawnPositions[1].y,
+                playerMovement.transform.position.z + obstacleOffsetFromPlayer);
+
+        OnObstaclesSpawn.Invoke();
+
+
+        //INITIALIZING VALUES FOR EACH SPAWNED OBJECTS
         int randomIndex = Random.Range(0, currentSpawningObstacles.Count);
         Debug.Log("THE RANDOM INDEX IS " + randomIndex);
         //Setting the correct answer
@@ -81,6 +114,8 @@ public class ObstacleSpawner : MonoBehaviour
 
         currentSpawningObstacles.Clear();
         numbersToAssign.Clear();
+
+        StartCoroutine(DelayedPool());
     }
 
     IEnumerator SpawnObstacle()
@@ -90,36 +125,30 @@ public class ObstacleSpawner : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(5,10));
                     CreateEquationObstacle();
                     Debug.Log("Spawn Obstacles");
-                    isOnSpawnCooldown = true;
                    // StartCoroutine(SpawnCoolDown());
                 
             
         }
     }
+    protected virtual void Pool(Obstacle obstacle)
+    {
+        obstacle.gameObject.SetActive(false);
+        pooledObjects.Add(obstacle);
+        currentSpawnedObjects.Remove(obstacle);
+    }
 
     //adding a spawncooldown so we don't get multiple obstacles spawned in one spot
-    IEnumerator SpawnCoolDown()
+    IEnumerator DelayedPool()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(20);
+
+        for (int i = 0; i < 3; i++)
+        {
+            Pool(currentSpawnedObjects[i]);
+        }
       //  isOnSpawnCooldown = false;
     }
 
-    //IEnumerator DestroyOldObstacles()
-    //{
-    //    while (true)
-    //    {
-    //        if (!playerMovement.isMoving) yield return null;
-    //        else
-    //        {
-    //            Debug.Log("hello");
-    //            yield return new WaitForSeconds(10f);
-    //            //for (int i = 0; i < allSpawnedObstacles.Count; i++)
-    //            //{
-    //            //    Destroy(allSpawnedObstacles[i].gameObject);
-    //            //}
-    //            //allSpawnedObstacles.Clear();
-    //        }
-    //    }
-    //}
-    //Implement deducing of spawn Interval later
+
+
 }

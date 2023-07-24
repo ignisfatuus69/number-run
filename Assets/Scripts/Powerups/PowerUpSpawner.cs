@@ -37,7 +37,7 @@ public class PowerUpSpawner : MonoBehaviour
     {
         powerUpOffset = Random.Range(7, 16);
         Debug.Log("test");
-        ResetPowerUp newPowerUp = Instantiate(powerUpPrefab, new Vector3(obstacleSpawner.nextSpawnPosition.x,obstacleSpawner.nextSpawnPosition.y, (obstacleSpawner.nextSpawnPosition.z + powerUpOffset)),Quaternion.identity);
+        ResetPowerUp newPowerUp = Instantiate(powerUpPrefab, new Vector3(obstacleSpawner.nextPowerupPosition.x,obstacleSpawner.nextPowerupPosition.y, (obstacleSpawner.nextPowerupPosition.z + powerUpOffset)),Quaternion.identity);
         currentSpawnIntervalTime = Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval + 1);
     }
     IEnumerator SpawnObstacle()
