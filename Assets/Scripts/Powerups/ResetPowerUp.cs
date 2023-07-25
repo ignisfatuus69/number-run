@@ -29,6 +29,7 @@ public class ResetPowerUp : PowerUp
     protected override void Effect(Collider other)
     {
         OnResetPowerUp?.Invoke();
+        OnGameObjectCollision?.Invoke(this.gameObject);
         other.GetComponentInChildren<EquationChecker>().AddSum(deductive);
         this.gameObject.SetActive(false);
     }

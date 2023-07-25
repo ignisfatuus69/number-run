@@ -71,10 +71,10 @@ public class ResetPowerUpSpawner : MonoBehaviour
             }
             else
             {
-                obj = Instantiate(powerUpPrefab);
+                obj = Instantiate(powerUpPrefab.gameObject);
+                PowerUpInitializations(obj);
                 currentSpawnedObjects.Add(obj);
             }
-
             totalSpawnsCount += 1;
             //Set Spawn Position
             SpawnPosition = new Vector3(Random.Range(-2,2+1),0.25f ,(playerMovement.transform.position.z + powerupOffset));
@@ -84,6 +84,12 @@ public class ResetPowerUpSpawner : MonoBehaviour
         }
 
         currentSpawnIntervalTime = Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval + 1);
+    }
+
+    private void PowerUpInitializations(GameObject powerUpGameObject)
+    {
+        PowerUp newPowerUp = powerUpGameObject.GetComponent<PowerUp>();
+        newPowerUp.OnGameObjectCollision += Pool;
     }
     protected virtual void Pool(GameObject obj)
     {
