@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ResetPowerUp : MonoBehaviour
+
+public class ResetPowerUp : MonoBehaviour,IPowerUp
 {
+    System.Action OnResetPowerUp;
     [SerializeField] int deductive=5;
     [SerializeField] int min=5;
     [SerializeField] int max=20;
@@ -21,6 +23,12 @@ public class ResetPowerUp : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Effect(other);
+    }
+
+    public void Effect(Collider other)
+    {
+        OnResetPowerUp?.Invoke();
         other.GetComponentInChildren<EquationChecker>().AddSum(deductive);
         this.gameObject.SetActive(false);
     }

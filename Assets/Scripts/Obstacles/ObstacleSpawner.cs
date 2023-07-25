@@ -13,40 +13,45 @@ public class ObstacleSpawner : MonoBehaviour
 {
 
     public OnObstacleSpawned EVT_OnObstacleSpawned;
-    public OnObstaclePooled EVT_OnObjectPooled;
+    public OnObstaclePooled EVT_OnObstaclePooled;
 
     [SerializeField] protected float poolTimer;
 
     public List<Obstacle> currentSpawnedObjects { get; protected set; } = new List<Obstacle>();
     public List<Obstacle> pooledObjects { get; protected set; } = new List<Obstacle>();
 
-    [SerializeField] protected Vector3 SpawnPosition;
+    protected Vector3 SpawnPosition;
 
     public int totalSpawnsCount { get; private set; } = 0;
     public int totalPooledCount { get; protected set; } = 0;
 
 
-    public System.Action OnObstaclesSpawn; 
+    public System.Action OnObstaclesSpawn;
+    [SerializeField] ResetPowerUpSpawner resetPowerUpSpawner;
     [SerializeField] EquationChecker equationChecker;
     [SerializeField] Obstacle obstaclePrefab;
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] int maxRange = 5;
+    [SerializeField] int minSpawnTime, maxSpawnTime;
+    [SerializeField] int minAdditiveRange = 1;
+    [SerializeField] int maxAdditiveRange = 5;
     [SerializeField] float obstacleOffsetFromPlayer;
     public Text additiveText;
     private List<Obstacle> currentSpawningObstacles = new List<Obstacle>();
+
     private List<int> numbersToAssign = new List<int>();
     public int randomAdditive { get; private set; }
-    public Vector3 nextPowerupPosition { get; private set; }
     // Start is called before the first frame update
     private void Start()
     {
         StartCoroutine(SpawnObstacle());
+        equationChecker.OnCurrentSumDeducted += disableCurrentObstacles;
         //StartCoroutine(DestroyOldObstacles());
     }
     private void CreateEquationObstacle()
     {
-         randomAdditive = Random.Range(1, maxRange+1);
+        currentSpawningObstacles.Clear();
+        randomAdditive = Random.Range(minAdditiveRange, maxAdditiveRange+1);
         //fill the list w/ 10 choices of additives to assign
         equationChecker.currentAdditive = randomAdditive;
         //Generating all 3 obstacles
@@ -79,11 +84,7 @@ public class ObstacleSpawner : MonoBehaviour
             EVT_OnObstacleSpawned.Invoke(obj);
         }
 
-        nextPowerupPosition =  new Vector3(spawnPositions[1].x, spawnPositions[1].y,
-                playerMovement.transform.position.z + obstacleOffsetFromPlayer);
-
-        OnObstaclesSpawn.Invoke();
-
+        OnObstaclesSpawn?.Invoke();
 
         //INITIALIZING VALUES FOR EACH SPAWNED OBJECTS
         int randomIndex = Random.Range(0, currentSpawningObstacles.Count);
@@ -112,7 +113,6 @@ public class ObstacleSpawner : MonoBehaviour
             }
         }
 
-        currentSpawningObstacles.Clear();
         numbersToAssign.Clear();
 
         StartCoroutine(DelayedPool());
@@ -122,7 +122,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(5,10));
+            yield return new WaitForSeconds(Random.Range(minSpawnTime,maxSpawnTime));
                     CreateEquationObstacle();
                     Debug.Log("Spawn Obstacles");
                    // StartCoroutine(SpawnCoolDown());
@@ -135,18 +135,27 @@ public class ObstacleSpawner : MonoBehaviour
         obstacle.gameObject.SetActive(false);
         pooledObjects.Add(obstacle);
         currentSpawnedObjects.Remove(obstacle);
+        EVT_OnObstaclePooled?.Invoke(obstacle);
     }
 
     //adding a spawncooldown so we don't get multiple obstacles spawned in one spot
     IEnumerator DelayedPool()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(poolTimer);
 
         for (int i = 0; i < 3; i++)
         {
             Pool(currentSpawnedObjects[i]);
         }
-      //  isOnSpawnCooldown = false;
+    }
+
+    public void disableCurrentObstacles()
+    {
+        for (int i = 0; i < currentSpawningObstacles.Count; i++)
+        {
+            currentSpawningObstacles[i].gameObject.SetActive(false);
+        }
+        
     }
 
 
