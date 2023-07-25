@@ -85,11 +85,11 @@ public class ResetPowerUpSpawner : MonoBehaviour
 
         currentSpawnIntervalTime = Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval + 1);
     }
-    //IEnumerator SpawnObstacle()
-    //{
-    //        Debug.Log(Mathf.RoundToInt(playerMovement.distanceTravelled));
-    //        CreatePowerup();
-
-    //}
+    protected virtual void Pool(GameObject obj)
+    {
+        obj.gameObject.SetActive(false);
+        pooledObjects.Add(obj.gameObject);
+        currentSpawnedObjects.Remove(obj.gameObject);
+    }
 
 }

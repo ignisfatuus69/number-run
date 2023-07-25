@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResetPowerUp : MonoBehaviour,IPowerUp
+public class ResetPowerUp : PowerUp
 {
     System.Action OnResetPowerUp;
     [SerializeField] int deductive=5;
@@ -26,7 +26,7 @@ public class ResetPowerUp : MonoBehaviour,IPowerUp
         Effect(other);
     }
 
-    public void Effect(Collider other)
+    protected override void Effect(Collider other)
     {
         OnResetPowerUp?.Invoke();
         other.GetComponentInChildren<EquationChecker>().AddSum(deductive);
