@@ -207,6 +207,8 @@ MonoBehaviour:
   additive: 0
   numberValue: 0
   numberValueText: {fileID: 2079896331589132754}
+  correctPFX: {fileID: 1907821483381266473, guid: 1b0e024df918c584d9869f14a5cfaeb6,
+    type: 3}
 --- !u!1 &8991960834280347435
 GameObject:
   m_ObjectHideFlags: 0
