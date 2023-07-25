@@ -1700,6 +1700,11 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 2029709586}
+    - target: {fileID: 1588859533809500397, guid: 5f978c76603aa214c92cfb629618c0fe,
+        type: 3}
+      propertyPath: obstacleLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f978c76603aa214c92cfb629618c0fe, type: 3}
 --- !u!1001 &4255693822352532028

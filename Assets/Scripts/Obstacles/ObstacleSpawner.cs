@@ -36,6 +36,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] int minAdditiveRange = 1;
     [SerializeField] int maxAdditiveRange = 5;
     [SerializeField] float obstacleOffsetFromPlayer;
+    public int currentAdditive { get; private set; }
     public Text additiveText;
     private List<Obstacle> currentSpawningObstacles = new List<Obstacle>();
 
@@ -91,7 +92,7 @@ public class ObstacleSpawner : MonoBehaviour
         Debug.Log("THE RANDOM INDEX IS " + randomIndex);
         //Setting the correct answer
         currentSpawningObstacles[randomIndex].SetNumberValue(equationChecker.currentSum + randomAdditive);
-        additiveText.text = (equationChecker.currentSum + "+" + randomAdditive.ToString());
+        //additiveText.text = (equationChecker.currentSum + "+" + randomAdditive.ToString());
         //additiveText.transform.position = new Vector3(0, 1, playerMovement.transform.position.z + obstacleOffsetFromPlayer);
         //Setting wrong answers for the rest of the obstacles
         randomAdditive -= 5;
