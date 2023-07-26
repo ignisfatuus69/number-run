@@ -38,11 +38,11 @@ public class PlayerMovement : MonoBehaviour
     
     private void FixedUpdate()
     {
-      
-            if (isMovingSideward)
+        distanceTravelled += forwardSpeed * Time.deltaTime;
+
+        if (isMovingSideward)
             {
             Vector3 displacement = new Vector3(Direction.x,0f,0f) * Time.fixedDeltaTime;
-            distanceTravelled += forwardSpeed * Time.deltaTime;
             rigidBody.velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSensitivity,0f,0f) + displacement;
             }
             else
