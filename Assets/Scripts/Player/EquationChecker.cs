@@ -55,7 +55,8 @@ public class EquationChecker : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20, obstacleLayerMask))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-            UpdateTextEquation();
+            Obstacle obstacleDetected = hit.collider.GetComponent<Obstacle>();
+            UpdateTextEquation(obstacleDetected);
         }
         else
         {
@@ -64,8 +65,8 @@ public class EquationChecker : MonoBehaviour
     }
   
 
-    private void UpdateTextEquation()
+    private void UpdateTextEquation(Obstacle obstacleDetected)
     {
-        textObject.text = currentSum.ToString() + " + " + currentAdditive.ToString();
+        textObject.text = currentSum.ToString() + " + " + obstacleDetected.additive.ToString();
     }
 }

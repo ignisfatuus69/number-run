@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sideMovementSpeed;
     [SerializeField] private float swipeSensitivity;
     [SerializeField] private float forwardSpeed;
+    [SerializeField] private int distanceTravelledToSpdIncrease=150;
+    [SerializeField] private float spdIncrement = 0.25f;
+
+    private bool hasInreasedSpeed = false;
 
     void Update()
     {
@@ -39,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         distanceTravelled += forwardSpeed * Time.deltaTime;
+        IncreaseSpeedOnDistanceTravelled();
 
         if (isMovingSideward)
             {
@@ -50,6 +56,21 @@ public class PlayerMovement : MonoBehaviour
                 rigidBody.velocity = Vector3.zero;
             }
         
-        
+    }
+
+    private void IncreaseSpeedOnDistanceTravelled()
+    {
+        if (hasInreasedSpeed) return;
+        if (distanceTravelled <= distanceTravelledToSpdIncrease) return;
+        if ((Mathf.RoundToInt(distanceTravelled)) % distanceTravelledToSpdIncrease == 0)
+            forwardSpeed += spdIncrement;
+        hasInreasedSpeed = true;
+        StartCoroutine(IncreaseSpeedCooldown());
+    }
+
+    IEnumerator IncreaseSpeedCooldown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        hasInreasedSpeed = false;
     }
 }

@@ -686,7 +686,7 @@ PlayerSettings:
     Purchasing: 0
     UDP: 0
     UNet: 1
-    Unity Ads: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -700,11 +700,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: ad04c3cc-07fc-42bd-bd3c-fc140bb4d2a7
+  cloudProjectId: 93bfab4a-6cec-425d-bf8b-3eee26f35608
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Number Dash
-  organizationId: ioacademics
+  organizationId: ignisalt3
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
