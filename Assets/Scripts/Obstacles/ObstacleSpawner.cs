@@ -11,23 +11,10 @@ public class OnObstaclePooled : UnityEvent<Obstacle> { };
 public class OnObstacleSpawned : UnityEvent<Obstacle> { };
 public class ObstacleSpawner : MonoBehaviour
 {
-
+    public System.Action OnObstaclesSpawn;
     public OnObstacleSpawned EVT_OnObstacleSpawned;
     public OnObstaclePooled EVT_OnObstaclePooled;
 
-    [SerializeField] protected float poolTimer;
-
-    public List<Obstacle> currentSpawnedObjects { get; protected set; } = new List<Obstacle>();
-    public List<Obstacle> pooledObjects { get; protected set; } = new List<Obstacle>();
-
-    protected Vector3 SpawnPosition;
-
-    public int totalSpawnsCount { get; private set; } = 0;
-    public int totalPooledCount { get; protected set; } = 0;
-
-
-    public System.Action OnObstaclesSpawn;
-    [SerializeField] ResetPowerUpSpawner resetPowerUpSpawner;
     [SerializeField] EquationChecker equationChecker;
     [SerializeField] Obstacle obstaclePrefab;
     [SerializeField] Vector2[] spawnPositions;
@@ -36,6 +23,16 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] int minAdditiveRange = 1;
     [SerializeField] int maxAdditiveRange = 5;
     [SerializeField] float obstacleOffsetFromPlayer;
+
+    [SerializeField] float poolTimer;
+
+    public List<Obstacle> currentSpawnedObjects { get; protected set; } = new List<Obstacle>();
+    public List<Obstacle> pooledObjects { get; protected set; } = new List<Obstacle>();
+
+    protected Vector3 SpawnPosition;
+
+    public int totalSpawnsCount { get; private set; } = 0;
+    public int totalPooledCount { get; protected set; } = 0;
     public int currentAdditive { get; private set; }
     public Text additiveText;
     private List<Obstacle> currentSpawningObstacles = new List<Obstacle>();
@@ -46,7 +43,9 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnObstacle());
-        equationChecker.OnCurrentSumDeducted += disableCurrentObstacles;
+        equationChecker.OnCurrentSumDeducted += DisableCurrentObstacles;
+        equationChecker.OnCurrentSumDeducted += RefreshObstacleValues;
+        equationChecker.OnCurrentSumAdded += RefreshObstacleValues;
         //StartCoroutine(DestroyOldObstacles());
     }
     private void CreateEquationObstacle()
@@ -119,6 +118,14 @@ public class ObstacleSpawner : MonoBehaviour
         StartCoroutine(DelayedPool());
     }
 
+    private void RefreshObstacleValues(int additive)
+    {
+        //Refreses all obstacle values whenever currentSum is changed
+        for (int i = 0; i < currentSpawnedObjects.Count; i++)
+        {
+            currentSpawnedObjects[i].SetNumberValue(currentSpawnedObjects[i].numberValue + additive);
+        }
+    }
     IEnumerator SpawnObstacle()
     {
         while (true)
@@ -139,7 +146,6 @@ public class ObstacleSpawner : MonoBehaviour
         EVT_OnObstaclePooled?.Invoke(obstacle);
     }
 
-    //adding a spawncooldown so we don't get multiple obstacles spawned in one spot
     IEnumerator DelayedPool()
     {
         yield return new WaitForSeconds(poolTimer);
@@ -150,7 +156,7 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-    public void disableCurrentObstacles()
+    public void DisableCurrentObstacles(int additive)
     {
         for (int i = 0; i < currentSpawningObstacles.Count; i++)
         {
