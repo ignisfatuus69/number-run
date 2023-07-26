@@ -1625,6 +1625,8 @@ MonoBehaviour:
   sideMovementSpeed: 50
   swipeSensitivity: 500
   forwardSpeed: 5
+  distanceTravelledToSpdIncrease: 100
+  spdIncrement: 0.25
 --- !u!114 &2029709587
 MonoBehaviour:
   m_ObjectHideFlags: 0
