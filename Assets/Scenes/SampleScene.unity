@@ -1968,6 +1968,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
         type: 3}
+      propertyPath: obstaclePrefab
+      value: 
+      objectReference: {fileID: 9211467627507538460, guid: 64eb3ce2669b752408b4e8b875ea1b83,
+        type: 3}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 2029709586}

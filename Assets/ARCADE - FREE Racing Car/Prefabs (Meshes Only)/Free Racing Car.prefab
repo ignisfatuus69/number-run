@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 1880317207959290724}
   - component: {fileID: 7450601661025392464}
   - component: {fileID: 4773440346842938287}
+  - component: {fileID: 5373628088107246652}
   m_Layer: 0
   m_Name: Free Racing Car
   m_TagString: Untagged
@@ -145,6 +146,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!95 &5373628088107246652
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248598967819147742}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 357b460deae07d640a7773bdc54f05e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1532183532590448871
 GameObject:
   m_ObjectHideFlags: 0
