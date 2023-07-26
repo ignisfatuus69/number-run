@@ -40,6 +40,7 @@ public class EquationChecker : MonoBehaviour
         {
             correctAnswers += 1;
             AudioManager.Instance.PlayOneShot(correctSFX);
+            CameraShake.Instance.ShakeCamera(5f, .1f);
         }
         else
         {
