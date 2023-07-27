@@ -19,13 +19,12 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] Obstacle obstaclePrefab;
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] int minSpawnTime, maxSpawnTime;
+    [SerializeField] float minSpawnTime, maxSpawnTime;
     [SerializeField] int minAdditiveRange = 1;
     [SerializeField] int maxAdditiveRange = 5;
     [SerializeField] float obstacleOffsetFromPlayer;
-
-    [SerializeField] float poolTimer;
-
+    [SerializeField] float spawnTimeDecrement;
+    [SerializeField] float distanceTravelledBeforeDecreasingSpawnTime;
     public List<Obstacle> currentSpawnedObjects { get; protected set; } = new List<Obstacle>();
     public List<Obstacle> pooledObjects { get; protected set; } = new List<Obstacle>();
 
@@ -39,6 +38,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     private List<int> numbersToAssign = new List<int>();
     public int randomAdditive { get; private set; }
+
+    private bool hasDecreasedSpawnTime = false;
+    float poolTimer = 20;
     // Start is called before the first frame update
     private void Start()
     {
@@ -47,6 +49,27 @@ public class ObstacleSpawner : MonoBehaviour
         equationChecker.OnCurrentSumDeducted += RefreshObstacleValues;
         equationChecker.OnCurrentSumAdded += RefreshObstacleValues;
         //StartCoroutine(DestroyOldObstacles());
+    }
+
+    private void Update()
+    {
+        IncreaseSpeedOnDistanceTravelled();
+    }
+    private void IncreaseSpeedOnDistanceTravelled()
+    {
+        if (hasDecreasedSpawnTime) return;
+        if (playerMovement.distanceTravelled <= this.distanceTravelledBeforeDecreasingSpawnTime) return;
+        if ((Mathf.RoundToInt(playerMovement.distanceTravelled)) % distanceTravelledBeforeDecreasingSpawnTime == 0)
+            maxSpawnTime -= spawnTimeDecrement;
+        if (maxSpawnTime <= minSpawnTime) maxSpawnTime = minSpawnTime;
+        hasDecreasedSpawnTime = true;
+        StartCoroutine(DecreaseSpawnTimeCooldown());
+    }
+
+    IEnumerator DecreaseSpawnTimeCooldown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        hasDecreasedSpawnTime = false;
     }
     private void CreateEquationObstacle()
     {

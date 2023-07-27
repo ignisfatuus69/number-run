@@ -2272,12 +2272,12 @@ PrefabInstance:
     - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
         type: 3}
       propertyPath: maxSpawnTime
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
         type: 3}
       propertyPath: minSpawnTime
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
         type: 3}
@@ -2301,6 +2301,11 @@ PrefabInstance:
       propertyPath: equationChecker
       value: 
       objectReference: {fileID: 1126221956}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnTimeDecrement
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
         type: 3}
       propertyPath: obstacleOffsetFromPlayer
@@ -2330,6 +2335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPositions.Array.data[2].y
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: distanceTravelledBeforeDecreasingSpawnTime
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2308b2bceb93fa4469fd467df91ea128, type: 3}
