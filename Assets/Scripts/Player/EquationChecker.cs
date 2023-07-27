@@ -13,6 +13,7 @@ public class EquationChecker : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] Text textObject;
     [SerializeField] LayerMask obstacleLayerMask;
+    [SerializeField] CameraShake cameraShake;
 
     private Coroutine raycastCoroutine;
     public bool isImmuneToEquation = false;
@@ -40,7 +41,8 @@ public class EquationChecker : MonoBehaviour
         {
             correctAnswers += 1;
             AudioManager.Instance.PlayOneShot(correctSFX);
-            CameraShake.Instance.ShakeCamera(5f, .1f);
+            cameraShake.ShakeCamera();
+            
         }
         else
         {
