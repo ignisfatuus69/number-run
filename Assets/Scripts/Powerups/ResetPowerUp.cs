@@ -10,6 +10,8 @@ public class ResetPowerUp : PowerUp
     [SerializeField] int min=5;
     [SerializeField] int max=20;
     [SerializeField] Text text;
+    [SerializeField] GameObject particleEffect;
+    [SerializeField] AudioClip resetSFX;
 
     private void OnEnable()
     {
@@ -24,6 +26,8 @@ public class ResetPowerUp : PowerUp
     private void OnTriggerEnter(Collider other)
     {
         Effect(other);
+        Instantiate(particleEffect, transform.position, transform.rotation);
+        AudioManager.Instance.PlayOneShot(resetSFX);
     }
 
     protected override void Effect(Collider other)

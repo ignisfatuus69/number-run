@@ -131,6 +131,9 @@ MonoBehaviour:
   min: 2
   max: 15
   text: {fileID: 3003983929192980617}
+  particleEffect: {fileID: 1907821483381266473, guid: 1b0e024df918c584d9869f14a5cfaeb6,
+    type: 3}
+  resetSFX: {fileID: 8300000, guid: eb3b111eb9e13c245b077f1e57bbf5ab, type: 3}
 --- !u!65 &1693643547094198571
 BoxCollider:
   m_ObjectHideFlags: 0
