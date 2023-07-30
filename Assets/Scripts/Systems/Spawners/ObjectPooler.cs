@@ -22,12 +22,18 @@ public abstract class ObjectPooler : MonoBehaviour
     public List<GameObject> currentSpawnedObjects { get; protected set; } = new List<GameObject>();
     public List<GameObject> pooledObjects { get; protected set; } = new List<GameObject>();
 
-    [SerializeField] protected Vector3 SpawnPosition;
+    protected Vector3 currentSpawnPosition;
 
     public int totalSpawnsCount { get; private set; } = 0;
     public int totalPooledCount { get; protected set; } = 0;
+
+    [SerializeField] protected float minTimeSpawnInterval;
+    [SerializeField] protected float maxTimeSpawnInterval;
+    [SerializeField] protected float minSpawnPositionForwardOffset;
+    [SerializeField] protected float maxSpawnPositionForwardOffset;
     public virtual void Spawn()
     {
+        InitilizeBeforeSpawn();
         for (int i = 0; i < SpawnCount; i++)
         {
 
@@ -51,18 +57,24 @@ public abstract class ObjectPooler : MonoBehaviour
 
             totalSpawnsCount += 1;
             //Set Spawn Position
-            obj.transform.position = SpawnPosition;
+            SetSpawnPosition(obj);
 
             EVT_OnObjectSpawned.Invoke(obj);
         }
+        PostSpawningObjectsInitilizations();
     }
+
+    protected abstract void InitilizeBeforeSpawn();
+    protected abstract void SetSpawnPosition(GameObject obj);
     protected abstract void SetPoolingInitializations(GameObject obj);
 
+    protected abstract void PostSpawningObjectsInitilizations();
     protected virtual void Pool(GameObject obj)
     {
         obj.gameObject.SetActive(false);
         pooledObjects.Add(obj.gameObject);
         currentSpawnedObjects.Remove(obj.gameObject);
+        EVT_OnObjectPooled?.Invoke(obj);
     }
 
 

@@ -2121,8 +2121,43 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1323734506425446318, guid: 06afd4631df45d847ba60de57c958200, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 06afd4631df45d847ba60de57c958200, type: 3}
+--- !u!1 &1323734505833721308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2977331798285855926, guid: 06afd4631df45d847ba60de57c958200,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323734505833721307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1323734505833721309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323734505833721308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61d524be08f3ac468be1cf500edd633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EVT_OnObjectSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  EVT_OnObjectPooled:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectToSpawn: {fileID: 4309290214865330108, guid: 993d5178e5904bd43afc565f62b0609f,
+    type: 3}
+  SpawnCount: 1
+  poolTimer: 20
+  minTimeSpawnInterval: 15
+  maxTimeSpawnInterval: 30
+  minSpawnPositionForwardOffset: 15
+  maxSpawnPositionForwardOffset: 25
+  playerTransform: {fileID: 385317836}
+  obstacleSpawner: {fileID: 871227941}
 --- !u!1001 &1588859532716902505
 PrefabInstance:
   m_ObjectHideFlags: 0
