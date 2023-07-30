@@ -4,8 +4,11 @@ using UnityEngine;
 
 public abstract class PowerUp : MonoBehaviour
 {
-    public System.Action<GameObject> OnGameObjectCollision;
+    public System.Action<GameObject> OnPowerUpActivated;
 
-    protected abstract void Effect(Collider other);
+    protected virtual void Effect(Collider other)
+    {
+        OnPowerUpActivated?.Invoke(this.gameObject);
+    }
 
 }

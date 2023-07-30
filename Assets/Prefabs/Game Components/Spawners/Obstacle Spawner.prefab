@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4255693822436557592}
   - component: {fileID: 4255693822436557599}
   m_Layer: 0
-  m_Name: Temporary Obstacle Spawner
+  m_Name: Obstacle Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

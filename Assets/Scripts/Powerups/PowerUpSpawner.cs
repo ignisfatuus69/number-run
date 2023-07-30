@@ -33,7 +33,7 @@ public class PowerUpSpawner : ObjectPooler
     protected override void SetPoolingInitializations(GameObject obj)
     {
         PowerUp newPowerUp = obj.GetComponent<PowerUp>();
-        newPowerUp.OnGameObjectCollision += Pool;
+        newPowerUp.OnPowerUpActivated += Pool;
     }
 
     protected override void PostSpawningObjectsInitilizations()

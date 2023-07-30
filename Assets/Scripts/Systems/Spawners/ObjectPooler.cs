@@ -71,10 +71,10 @@ public abstract class ObjectPooler : MonoBehaviour
     protected abstract void PostSpawningObjectsInitilizations();
     protected virtual void Pool(GameObject obj)
     {
-        obj.gameObject.SetActive(false);
         pooledObjects.Add(obj.gameObject);
         currentSpawnedObjects.Remove(obj.gameObject);
         EVT_OnObjectPooled?.Invoke(obj);
+        obj.gameObject.SetActive(false);
     }
 
 

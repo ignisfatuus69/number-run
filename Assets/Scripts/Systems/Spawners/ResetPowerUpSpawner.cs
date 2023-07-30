@@ -11,9 +11,4 @@ public class ResetPowerUpSpawner : PowerUpSpawner
          obstacleSpawner.OnObstaclesSpawn +=CreatePowerUp;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
