@@ -2,48 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileManager : MonoBehaviour
+public class TileManager : ObjectPooler
 {
 
     public GameObject[] tilePrefabs;
-    public float zSpawn = 0;
+    public float zSpawnOffset = 0;
     public float tileLength = 8;
     public int numberOfTiles = 5;
-    private List<GameObject> activeTiles = new List<GameObject>();
     public Transform playerTransform;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        for(int i = 0; i < numberOfTiles; i++)
-        {
-            if (i == 0)
-                spawnTile(0);
-            else
-            spawnTile(Random.Range(0, tilePrefabs.Length));
-        }
-    }
-
+    [SerializeField] float poolTimer = 20;
+    private bool hasSpawned = false;
     // Update is called once per frame
     void Update()
     {
-       if(playerTransform.position.z -35 > zSpawn - (numberOfTiles * tileLength))
+        if (hasSpawned) return;
+        if (playerTransform.position.z - 35 > zSpawnOffset - (numberOfTiles * tileLength))
         {
-            spawnTile(Random.Range(0, tilePrefabs.Length));
-            DeleteTile();
+            Debug.Log("Spawning Tile");
+            Spawn();
+            hasSpawned = true;
+            StartCoroutine(SpawnCooldown());
         }
     }
 
-    public void spawnTile(int tileIndex)
+    protected override void InitilizeBeforeSpawn()
     {
-        GameObject go = Instantiate(tilePrefabs[tileIndex], transform.forward * zSpawn, transform.rotation);
-        activeTiles.Add(go);
-        zSpawn += tileLength;
+        //Randomize selection of tile object before spawning
+        if (pooledObjects.Count <= 0)
+        {
+            ObjectToSpawn = tilePrefabs[0];
+            return;
+        }
+        else ObjectToSpawn = tilePrefabs[(Random.Range(0, tilePrefabs.Length))];
     }
 
-    private void DeleteTile()
+    protected override void SetSpawnPosition(GameObject obj)
     {
-        Destroy(activeTiles[0]);
-        activeTiles.RemoveAt(0);
+        obj.transform.position = currentSpawnPosition;
+        currentSpawnPosition = transform.forward * zSpawnOffset;
     }
+
+    protected override void SetPoolingInitializations(GameObject obj)
+    {
+        zSpawnOffset += tileLength;
+        StartCoroutine(DelayedPool());
+    }
+
+    protected override void PostSpawningObjectsInitilizations()
+    {
+        hasSpawned = false;
+        //DelayedPool();
+    }
+
+    IEnumerator SpawnCooldown()
+    {
+        yield return new WaitForSeconds(1);
+        hasSpawned = false;
+
+    }
+    IEnumerator DelayedPool()
+    {
+        yield return new WaitForSeconds(poolTimer);
+        Pool(currentSpawnedObjects[0]);
+        Debug.Log("Pooling object");
+        
+    }
+
 }

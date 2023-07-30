@@ -14,10 +14,8 @@ public abstract class ObjectPooler : MonoBehaviour
     public OnObjectSpawned EVT_OnObjectSpawned;
     public OnObjectPooled EVT_OnObjectPooled;
 
-    [SerializeField] private GameObject ObjectToSpawn;
+    [SerializeField] protected GameObject ObjectToSpawn;
     [SerializeField] private int SpawnCount = 1;
-
-    [SerializeField] protected float poolTimer;
 
     public List<GameObject> currentSpawnedObjects { get; protected set; } = new List<GameObject>();
     public List<GameObject> pooledObjects { get; protected set; } = new List<GameObject>();

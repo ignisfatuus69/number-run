@@ -40,7 +40,7 @@ public class ObstacleSpawner : MonoBehaviour
     public int randomAdditive { get; private set; }
 
     private bool hasDecreasedSpawnTime = false;
-    float poolTimer = 20;
+    [SerializeField]float poolTimer = 20;
     // Start is called before the first frame update
     private void Start()
     {

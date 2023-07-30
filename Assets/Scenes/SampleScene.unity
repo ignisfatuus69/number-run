@@ -677,7 +677,8 @@ Transform:
   m_LocalRotation: {x: 0.08892885, y: 0, z: 0, w: 0.996038}
   m_LocalPosition: {x: 0, y: 1.2, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1520502210}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10.88, y: 0, z: 0}
@@ -1412,6 +1413,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1520502209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520502210}
+  - component: {fileID: 1520502211}
+  m_Layer: 0
+  m_Name: Occlusion Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1520502210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520502209}
+  m_LocalRotation: {x: -0.08892885, y: -0, z: -0, w: 0.996038}
+  m_LocalPosition: {x: 0, y: -0.7381375, z: 2.6730418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!192 &1520502211
+OcclusionArea:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520502209}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+  m_IsViewVolume: 1
 --- !u!1 &1612035954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,7 +2296,6 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 4309290214865330108, guid: 993d5178e5904bd43afc565f62b0609f,
     type: 3}
   SpawnCount: 1
-  poolTimer: 20
   minTimeSpawnInterval: 15
   maxTimeSpawnInterval: 30
   minSpawnPositionForwardOffset: 15
@@ -2627,6 +2669,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tile Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316468915008658779, guid: d3c940813f27e4c248a79a10468ac20e,
+        type: 3}
+      propertyPath: poolTimer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316468915008658779, guid: d3c940813f27e4c248a79a10468ac20e,
+        type: 3}
+      propertyPath: SpawnCount
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8316468915008658779, guid: d3c940813f27e4c248a79a10468ac20e,
         type: 3}
