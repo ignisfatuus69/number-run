@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class Coin : MonoBehaviour
 {
-    public System.Action OnHitPlayer;
+    public System.Action<GameObject> OnHitPlayer;
     public int coinValue = 1;
-    [SerializeField] Score ScoreObj;
+    //public Score ScoreObj;
 
     private void Update()
     {
@@ -21,6 +21,6 @@ public class Coin : MonoBehaviour
         if (playerCoinInventory == null) return;
 
         playerCoinInventory.AddCoin(coinValue);
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }

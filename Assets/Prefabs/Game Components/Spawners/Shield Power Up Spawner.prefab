@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8833920591045313831}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -49,10 +49,9 @@ MonoBehaviour:
   EVT_OnObjectPooled:
     m_PersistentCalls:
       m_Calls: []
-  ObjectToSpawn: {fileID: 6681500929298960050, guid: 5c527a07daecb044db86ed8f8154128f,
+  ObjectToSpawn: {fileID: 5520050921530497818, guid: 15a8ee7ddb83a4840ae9e785ffacde85,
     type: 3}
   SpawnCount: 1
-  poolTimer: 20
   minTimeSpawnInterval: 15
   maxTimeSpawnInterval: 30
   minSpawnPositionForwardOffset: 15

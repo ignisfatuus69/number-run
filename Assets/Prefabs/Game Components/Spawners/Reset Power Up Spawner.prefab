@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2977331798285855920}
-  - component: {fileID: 1323734506425446318}
+  - component: {fileID: 1323734505833721309}
   m_Layer: 0
   m_Name: Reset Power Up Spawner
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1323734506425446318
+--- !u!114 &1323734505833721309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,13 +40,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2977331798285855926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db1f29c0f8d11540be5f73d70a93c92, type: 3}
+  m_Script: {fileID: 11500000, guid: e61d524be08f3ac468be1cf500edd633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTimeSpawnInterval: 2
-  maxTimeSpawnInterval: 5
-  powerUpPrefab: {fileID: 4878683841023746633, guid: 993d5178e5904bd43afc565f62b0609f,
+  EVT_OnObjectSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  EVT_OnObjectPooled:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectToSpawn: {fileID: 4309290214865330108, guid: 993d5178e5904bd43afc565f62b0609f,
     type: 3}
-  playerMovement: {fileID: 0}
-  obstacleOffsetFromPlayer: 5
+  SpawnCount: 1
+  minTimeSpawnInterval: 15
+  maxTimeSpawnInterval: 30
+  minSpawnPositionForwardOffset: 15
+  maxSpawnPositionForwardOffset: 25
+  playerTransform: {fileID: 0}
   obstacleSpawner: {fileID: 0}

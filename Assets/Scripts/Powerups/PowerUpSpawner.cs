@@ -8,6 +8,7 @@ public class PowerUpSpawner : ObjectPooler
     private float currentPowerUpForwardSpawnOffset;
     private float currentSpawnIntervalTime=10;
     private bool isSpawningPowerUp = false;
+    [SerializeField] float poolTimer = 20;
     public void CreatePowerUp()
     {
         int randomNumber = Random.Range(0, 2);
@@ -39,6 +40,7 @@ public class PowerUpSpawner : ObjectPooler
     protected override void PostSpawningObjectsInitilizations()
     {
         currentSpawnIntervalTime = Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval + 1);
+        StartCoroutine(DelayedPool());
     }
 
     protected override void InitilizeBeforeSpawn()
@@ -46,6 +48,16 @@ public class PowerUpSpawner : ObjectPooler
         currentPowerUpForwardSpawnOffset = Random.Range(minSpawnPositionForwardOffset, maxSpawnPositionForwardOffset);
     }
 
+    IEnumerator DelayedPool()
+    {
+        yield return new WaitForSeconds(poolTimer);
+        for (int i = 0; i < SpawnCount; i++)
+        {
+            Pool(currentSpawnedObjects[0]);
+        }
+        Debug.Log("Pooling object");
+
+    }
     protected override void SetPoolingSpawnInitializations(GameObject obj)
     {
        // throw new System.NotImplementedException();

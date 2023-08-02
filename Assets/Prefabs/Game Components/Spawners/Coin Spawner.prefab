@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5130716023238981965
+--- !u!1 &4138531261261874851
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3624755025482953136}
-  - component: {fileID: 8316468915008658779}
+  - component: {fileID: 1262590757342083091}
+  - component: {fileID: 8474841961626064850}
   m_Layer: 0
-  m_Name: Tile Manager
+  m_Name: Coin Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3624755025482953136
+--- !u!4 &1262590757342083091
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5130716023238981965}
+  m_GameObject: {fileID: 4138531261261874851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,16 +31,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8316468915008658779
+--- !u!114 &8474841961626064850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5130716023238981965}
+  m_GameObject: {fileID: 4138531261261874851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ac982d0f01b249ffb1b231ecfded012, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c72257831f76fc408a3b634be3f3bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EVT_OnObjectSpawned:
@@ -50,18 +50,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ObjectToSpawn: {fileID: 0}
-  SpawnCount: 7
+  SpawnCount: 1
   minTimeSpawnInterval: 0
   maxTimeSpawnInterval: 0
   minSpawnPositionForwardOffset: 0
   maxSpawnPositionForwardOffset: 0
-  tilePrefabs:
-  - {fileID: 230097372360070495, guid: 4441cd401987cfc42b4472e2b8fa8056, type: 3}
-  - {fileID: 230097372360070495, guid: 49401af52f8644a0ebd89e91addc29aa, type: 3}
-  - {fileID: 230097372360070495, guid: 4441cd401987cfc42b4472e2b8fa8056, type: 3}
-  - {fileID: 230097372360070495, guid: 8761893e94ce764469e07e6164137d8a, type: 3}
-  zSpawnOffset: 0
-  tileLength: 8
-  numberOfTiles: 7
-  playerTransform: {fileID: 0}
-  poolTimer: 15
+  CoinArrangementPrefabs: []

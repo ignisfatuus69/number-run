@@ -43,15 +43,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ca34ef849bc8244bc816cce7b4f9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EVT_OnObstacleSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  EVT_OnObstaclePooled:
+    m_PersistentCalls:
+      m_Calls: []
   equationChecker: {fileID: 0}
-  spawnTimeInterval: 3
-  obstaclePrefab: {fileID: 6960275251951196749, guid: 64eb3ce2669b752408b4e8b875ea1b83,
+  obstaclePrefab: {fileID: 9211467627507538460, guid: 64eb3ce2669b752408b4e8b875ea1b83,
     type: 3}
   spawnPositions:
-  - {x: -1.5, y: 0.5}
-  - {x: 0, y: 0.5}
-  - {x: 1.5, y: 0.5}
+  - {x: -2, y: 0.25}
+  - {x: 0, y: 0.25}
+  - {x: 2, y: 0.25}
   playerMovement: {fileID: 0}
+  minSpawnTime: 4
+  maxSpawnTime: 12
+  minAdditiveRange: 1
+  maxAdditiveRange: 5
+  obstacleOffsetFromPlayer: 30
+  spawnTimeDecrement: 0.25
+  distanceTravelledBeforeDecreasingSpawnTime: 250
   additiveText: {fileID: 0}
-  maxRange: 5
-  obstacleOffsetFromPlayer: 10
+  poolTimer: 20
