@@ -16,11 +16,12 @@ public class EquationChecker : MonoBehaviour
     [SerializeField] CameraShake cameraShake;
 
     private Coroutine raycastCoroutine;
+    public bool isApproachingObstacle { get; private set; } = false;
     public bool isImmuneToEquation = false;
     public int currentSum { get; private set; } = 0;
     public int correctAnswers { get; private set; } = 0;
     public int currentAdditive;
-
+    public float distanceToObstacle { get; private set; } = 0;
     public void AddSum(int additive)
     {
         currentSum += additive;
@@ -59,10 +60,13 @@ public class EquationChecker : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
             Obstacle obstacleDetected = hit.collider.GetComponent<Obstacle>();
             UpdateTextEquation(obstacleDetected);
+            isApproachingObstacle = true;
+            distanceToObstacle = Vector3.Distance(this.transform.position, hit.transform.position);
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            isApproachingObstacle = false;
         }
     }
   

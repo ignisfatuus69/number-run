@@ -7,6 +7,7 @@ public class ShieldPowerUp : PowerUp
 {
     public System.Action<GameObject> OnShieldEnded;
     public bool isActive { get; private set; } = false;
+    [SerializeField] float distanceBeforeActivation;
     [SerializeField] float duration;
     [SerializeField] GameObject particleEffect;
     [SerializeField] AudioClip powerUpSFX;
