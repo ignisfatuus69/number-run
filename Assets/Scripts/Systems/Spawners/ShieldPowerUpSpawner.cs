@@ -12,7 +12,7 @@ public class ShieldPowerUpSpawner : PowerUpSpawner
     {
         obstacleSpawner.OnObstaclesSpawn += CreatePowerUp;
     }
-    protected override void SetPoolingInitializations(GameObject obj)
+    protected override void SetInstantiateInitializations(GameObject obj)
     {
         ShieldPowerUp shieldPowerup = obj.GetComponent<ShieldPowerUp>();
         shieldPowerup.equationCheckerObj = this.equationCheckerObj;

@@ -33,7 +33,7 @@ public class TileManager : ObjectPooler
             ObjectToSpawn = tilePrefabs[0];
             return;
         }
-        else ObjectToSpawn = tilePrefabs[(Random.Range(0, tilePrefabs.Length))];
+        ObjectToSpawn = tilePrefabs[(Random.Range(0, tilePrefabs.Length))];
     }
 
     protected override void SetSpawnPosition(GameObject obj)
@@ -42,16 +42,15 @@ public class TileManager : ObjectPooler
         currentSpawnPosition = transform.forward * zSpawnOffset;
     }
 
-    protected override void SetPoolingInitializations(GameObject obj)
+    protected override void SetInstantiateInitializations(GameObject obj)
     {
         zSpawnOffset += tileLength;
-        StartCoroutine(DelayedPool());
     }
 
     protected override void PostSpawningObjectsInitilizations()
     {
         hasSpawned = false;
-        //DelayedPool();
+        StartCoroutine(DelayedPool());
     }
 
     IEnumerator SpawnCooldown()
@@ -63,9 +62,16 @@ public class TileManager : ObjectPooler
     IEnumerator DelayedPool()
     {
         yield return new WaitForSeconds(poolTimer);
-        Pool(currentSpawnedObjects[0]);
+        for (int i = 0; i < SpawnCount; i++)
+        {
+            Pool(currentSpawnedObjects[0]);
+        }
         Debug.Log("Pooling object");
         
     }
 
+    protected override void SetPoolingSpawnInitializations(GameObject obj)
+    {
+        zSpawnOffset += tileLength;
+    }
 }

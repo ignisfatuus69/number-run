@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class Coin : MonoBehaviour
 {
-    private EquationChecker ScoreText;
-
-    private void Start()
-    {
-        ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<EquationChecker>();
-    }
+    public System.Action OnHitPlayer;
+    public int coinValue = 1;
+    [SerializeField] Score ScoreObj;
 
     private void Update()
     {
@@ -19,7 +16,11 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //ScoreText.ScorePlusOne();
+        Debug.Log("Add score");
+        CoinInventory playerCoinInventory = other?.GetComponent<CoinInventory>();
+        if (playerCoinInventory == null) return;
+
+        playerCoinInventory.AddCoin(coinValue);
         Destroy(gameObject);
     }
 }

@@ -30,7 +30,7 @@ public class PowerUpSpawner : ObjectPooler
         obj.transform.position = currentSpawnPosition;
     }
 
-    protected override void SetPoolingInitializations(GameObject obj)
+    protected override void SetInstantiateInitializations(GameObject obj)
     {
         PowerUp newPowerUp = obj.GetComponent<PowerUp>();
         newPowerUp.OnPowerUpActivated += Pool;
@@ -44,5 +44,10 @@ public class PowerUpSpawner : ObjectPooler
     protected override void InitilizeBeforeSpawn()
     {
         currentPowerUpForwardSpawnOffset = Random.Range(minSpawnPositionForwardOffset, maxSpawnPositionForwardOffset);
+    }
+
+    protected override void SetPoolingSpawnInitializations(GameObject obj)
+    {
+       // throw new System.NotImplementedException();
     }
 }

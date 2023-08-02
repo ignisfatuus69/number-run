@@ -15,7 +15,7 @@ public abstract class ObjectPooler : MonoBehaviour
     public OnObjectPooled EVT_OnObjectPooled;
 
     [SerializeField] protected GameObject ObjectToSpawn;
-    [SerializeField] private int SpawnCount = 1;
+    [SerializeField] protected int SpawnCount = 1;
 
     public List<GameObject> currentSpawnedObjects { get; protected set; } = new List<GameObject>();
     public List<GameObject> pooledObjects { get; protected set; } = new List<GameObject>();
@@ -44,13 +44,14 @@ public abstract class ObjectPooler : MonoBehaviour
                 pooledObjects.RemoveAt(0);
                 obj.SetActive(true);
                 currentSpawnedObjects.Add(obj);
+                SetPoolingSpawnInitializations(obj);
 
             }
             else
             {
                 obj = Instantiate(ObjectToSpawn);
                 currentSpawnedObjects.Add(obj);
-                SetPoolingInitializations(obj);
+                SetInstantiateInitializations(obj);
             }
 
             totalSpawnsCount += 1;
@@ -64,7 +65,9 @@ public abstract class ObjectPooler : MonoBehaviour
 
     protected abstract void InitilizeBeforeSpawn();
     protected abstract void SetSpawnPosition(GameObject obj);
-    protected abstract void SetPoolingInitializations(GameObject obj);
+    protected abstract void SetInstantiateInitializations(GameObject obj);
+
+    protected abstract void SetPoolingSpawnInitializations(GameObject obj);
 
     protected abstract void PostSpawningObjectsInitilizations();
     protected virtual void Pool(GameObject obj)
