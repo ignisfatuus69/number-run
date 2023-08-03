@@ -7,13 +7,11 @@ public class PowerUpSpawner : ObjectPooler
     [SerializeField] Transform playerTransform;
     private float currentPowerUpForwardSpawnOffset;
     private float currentSpawnIntervalTime=10;
-    private bool isSpawningPowerUp = false;
+    protected bool isSpawningPowerUp = false;
     [SerializeField] float poolTimer = 20;
     public void CreatePowerUp()
     {
-        int randomNumber = Random.Range(0, 2);
-        if (randomNumber == 0) isSpawningPowerUp = true;
-        else isSpawningPowerUp = false;
+        SetConditionForSpawning();
 
         if (isSpawningPowerUp)
         {
@@ -61,5 +59,12 @@ public class PowerUpSpawner : ObjectPooler
     protected override void SetPoolingSpawnInitializations(GameObject obj)
     {
        // throw new System.NotImplementedException();
+    }
+
+    protected virtual void SetConditionForSpawning() 
+    {
+        int randomNumber = Random.Range(0, 2);
+        if (randomNumber == 0) isSpawningPowerUp = true;
+        else isSpawningPowerUp = false;
     }
 }
