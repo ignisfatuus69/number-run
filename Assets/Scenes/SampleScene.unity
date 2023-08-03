@@ -306,6 +306,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1323734505833721307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &699220407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6681500929298960050, guid: 5c527a07daecb044db86ed8f8154128f,
+    type: 3}
+  m_PrefabInstance: {fileID: 242370771684883685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +348,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -392,43 +398,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.51899153, y: -0.21828574, z: 0.13906334, w: 0.81465364}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.33036605, y: -0.24321032, z: 0.0885213, w: 0.9076734}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 65, y: -30, z: 0}
---- !u!1 &717877392
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 717877393}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &717877393
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717877392}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.882}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: -30, z: 0}
 --- !u!4 &782905632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3624755025482953136, guid: d3c940813f27e4c248a79a10468ac20e,
@@ -1581,12 +1557,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!1 &1617033049 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6681500929298960050, guid: 5c527a07daecb044db86ed8f8154128f,
-    type: 3}
-  m_PrefabInstance: {fileID: 242370771684883685}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1721797881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,11 +2067,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 385317836}
     m_Modifications:
-    - target: {fileID: 5452009994431528887, guid: 5c527a07daecb044db86ed8f8154128f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 70f2d2cd11b423f4a833930ec7631749, type: 2}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_RootOrder
@@ -2130,12 +2095,12 @@ PrefabInstance:
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
@@ -2182,8 +2147,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4881686608851447636, guid: 5c527a07daecb044db86ed8f8154128f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c527a07daecb044db86ed8f8154128f, type: 3}
 --- !u!1001 &1323734505833721307
 PrefabInstance:
@@ -2610,7 +2574,7 @@ PrefabInstance:
         type: 3}
       propertyPath: shieldObj
       value: 
-      objectReference: {fileID: 1617033049}
+      objectReference: {fileID: 699220407}
     - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
       propertyPath: obstacleSpawner

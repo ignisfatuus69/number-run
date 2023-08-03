@@ -57,6 +57,7 @@ MonoBehaviour:
   minSpawnPositionForwardOffset: 15
   maxSpawnPositionForwardOffset: 25
   playerTransform: {fileID: 0}
+  poolTimer: 20
   obstacleSpawner: {fileID: 0}
   equationCheckerObj: {fileID: 0}
   shieldObj: {fileID: 0}
