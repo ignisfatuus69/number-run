@@ -1910,7 +1910,7 @@ PrefabInstance:
       objectReference: {fileID: 1126221956}
     - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
       propertyPath: maxTimeSpawnInterval
-      value: 45
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
       propertyPath: minTimeSpawnInterval
@@ -2731,7 +2731,7 @@ PrefabInstance:
     - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
       propertyPath: maxTimeSpawnInterval
-      value: 45
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
