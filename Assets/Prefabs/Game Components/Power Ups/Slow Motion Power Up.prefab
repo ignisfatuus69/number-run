@@ -67,7 +67,7 @@ MonoBehaviour:
   particleEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f,
     type: 3}
   powerUpSFX: {fileID: 8300000, guid: eb3b111eb9e13c245b077f1e57bbf5ab, type: 3}
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 5948714827126776102}
 --- !u!114 &6398559061291054873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +143,12 @@ PrefabInstance:
 --- !u!4 &5967925717163095102 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4031330686921214, guid: 8e96a5cadf0c8f948b8c09bc6772e39e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5970654538854325696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5948714827126776102 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23100968208039142, guid: 8e96a5cadf0c8f948b8c09bc6772e39e,
     type: 3}
   m_PrefabInstance: {fileID: 5970654538854325696}
   m_PrefabAsset: {fileID: 0}

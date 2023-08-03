@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8833920591045313831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8833920591045313825}
+  - component: {fileID: 2051557301}
+  m_Layer: 0
+  m_Name: Slow Power Up Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8833920591045313825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833920591045313831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2051557301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833920591045313831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f381ebc7c18cca4498b5159b66c343cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EVT_OnObjectSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  EVT_OnObjectPooled:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectToSpawn: {fileID: 6323797381754916461, guid: a226c304117c3504e8f7d1f3cf2968b2,
+    type: 3}
+  SpawnCount: 1
+  minTimeSpawnInterval: 30
+  maxTimeSpawnInterval: 60
+  minSpawnPositionForwardOffset: 15
+  maxSpawnPositionForwardOffset: 25
+  playerTransform: {fileID: 0}
+  poolTimer: 20
+  equationCheckerObj: {fileID: 0}
+  playerMovement: {fileID: 0}

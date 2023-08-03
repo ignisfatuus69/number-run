@@ -1432,6 +1432,7 @@ Transform:
   - {fileID: 1387882256}
   - {fileID: 542121873}
   - {fileID: 2977331797695948691}
+  - {fileID: 2051557299}
   - {fileID: 1670600275170923863}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1884,6 +1885,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensity: 0
   time: 0
+--- !u!1001 &2051557298
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1518112327}
+    m_Modifications:
+    - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+      propertyPath: poolTimer
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 2029709586}
+    - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 385317836}
+    - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+      propertyPath: equationCheckerObj
+      value: 
+      objectReference: {fileID: 1126221956}
+    - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+      propertyPath: maxTimeSpawnInterval
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+      propertyPath: minTimeSpawnInterval
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313831, guid: c957c270b149bdc4082ac35b58d11f7b,
+        type: 3}
+      propertyPath: m_Name
+      value: Slow Power Up Spawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+--- !u!4 &2051557299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2051557298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2070366570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2440,7 @@ PrefabInstance:
     - target: {fileID: 1262590757342083091, guid: fd5a855eb7f499840b30688412bbce7b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1262590757342083091, guid: fd5a855eb7f499840b30688412bbce7b,
         type: 3}
@@ -2605,6 +2705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
+      propertyPath: poolTimer
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
+        type: 3}
       propertyPath: shieldObj
       value: 
       objectReference: {fileID: 699220407}
@@ -2623,6 +2728,16 @@ PrefabInstance:
       propertyPath: equationCheckerObj
       value: 
       objectReference: {fileID: 1126221956}
+    - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
+        type: 3}
+      propertyPath: maxTimeSpawnInterval
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
+        type: 3}
+      propertyPath: minTimeSpawnInterval
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8833920591045313831, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
       propertyPath: m_Name

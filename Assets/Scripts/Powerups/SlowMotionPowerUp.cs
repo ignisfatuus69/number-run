@@ -7,8 +7,8 @@ public class SlowMotionPowerUp : PowerUp
     public System.Action<GameObject> OnSlowMotionEnded;
     [SerializeField] float distanceBeforeActivation = 5;
     [SerializeField] float slowDownValue;
-    [SerializeField] EquationChecker equationCheckerObj;
-    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] public EquationChecker equationCheckerObj;
+    [SerializeField] public PlayerMovement playerMovement;
     [SerializeField] float duration;
     [SerializeField] GameObject particleEffect;
     [SerializeField] AudioClip powerUpSFX;
@@ -41,6 +41,8 @@ public class SlowMotionPowerUp : PowerUp
             else if (!equationCheckerObj.isApproachingObstacle)
             {
                 Time.timeScale = 1;
+                playerMovement.sideMovementSpeed = 50;
+                playerMovement.swipeSensitivity = 500;
             }
         }
     }
@@ -72,6 +74,7 @@ public class SlowMotionPowerUp : PowerUp
                 Debug.Log("Slowmo is done");
                 equationCheckerObj.isImmuneToEquation = false;
                 OnSlowMotionEnded?.Invoke(this.gameObject);
+                StopAllCoroutines();
                 isActive = false;
                 playerMovement.sideMovementSpeed = 50;
                 playerMovement.swipeSensitivity = 500;
