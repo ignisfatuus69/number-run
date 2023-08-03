@@ -50,7 +50,7 @@ MonoBehaviour:
   minDeductive: 5
   maxDeductive: 20
   text: {fileID: 3003983929192980617}
-  particleEffect: {fileID: 1907821483381266473, guid: 1b0e024df918c584d9869f14a5cfaeb6,
+  particleEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f,
     type: 3}
   resetSFX: {fileID: 8300000, guid: eb3b111eb9e13c245b077f1e57bbf5ab, type: 3}
 --- !u!65 &1693643547094198571
@@ -422,11 +422,32 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114073182108852144, guid: a37573ad5d3fb7a47997aadbf0976202, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a37573ad5d3fb7a47997aadbf0976202, type: 3}
+--- !u!1 &4477374898399831698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1015780934767744, guid: a37573ad5d3fb7a47997aadbf0976202,
+    type: 3}
+  m_PrefabInstance: {fileID: 4476946810876080658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4481058186264680572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4122938131327598, guid: a37573ad5d3fb7a47997aadbf0976202,
     type: 3}
   m_PrefabInstance: {fileID: 4476946810876080658}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8307317014874539313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477374898399831698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1263252af0797449ba9941f2d2c190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotate: 1
+  rotationSpeed: 50

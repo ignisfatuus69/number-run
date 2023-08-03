@@ -10,6 +10,8 @@ public class SlowMotionPowerUp : PowerUp
     [SerializeField] EquationChecker equationCheckerObj;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] float duration;
+    [SerializeField] GameObject particleEffect;
+    [SerializeField] AudioClip powerUpSFX;
     public bool isActive { get; private set; } = false;
     float originalSpeedValue;
     float currentDuration;
@@ -47,8 +49,8 @@ public class SlowMotionPowerUp : PowerUp
     {
         Effect(other);
         meshRenderer.enabled = false;
-        //add effects
-        //add sounds
+        Instantiate(particleEffect, transform.position, transform.rotation);
+        AudioManager.Instance.PlayOneShot(powerUpSFX);
     }
     protected override void Effect(Collider other)
     {
