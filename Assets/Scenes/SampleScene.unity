@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 894843268}
   - component: {fileID: 894843270}
   - component: {fileID: 894843269}
+  - component: {fileID: 894843271}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -473,7 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -482,11 +483,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4a3d0b80311670240ae08ff7fc1dc3c0, type: 3}
-    m_FontSize: 30
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 58
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -502,6 +503,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894843267}
   m_CullTransparentMesh: 1
+--- !u!114 &894843271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894843267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
 --- !u!1 &934320660
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +996,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 59
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1032,7 +1048,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 400, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1273659194
 MonoBehaviour:
@@ -1110,8 +1126,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c5674c6305843a046beddbb645e3259c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1462,6 +1478,12 @@ OcclusionArea:
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
   m_IsViewVolume: 1
+--- !u!1 &1562170228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1423659453171468, guid: 0c727ac509034cc4abd0a3b5e790e831,
+    type: 3}
+  m_PrefabInstance: {fileID: 1451033838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1612035954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,6 +2713,16 @@ PrefabInstance:
     - target: {fileID: 6940987737266353091, guid: 9688fd87dd5c55b42b658cc865cce087,
         type: 3}
       propertyPath: textObj
+      value: 
+      objectReference: {fileID: 1180646454}
+    - target: {fileID: 6940987737266353091, guid: 9688fd87dd5c55b42b658cc865cce087,
+        type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 1562170228}
+    - target: {fileID: 6940987737266353091, guid: 9688fd87dd5c55b42b658cc865cce087,
+        type: 3}
+      propertyPath: gameOverText
       value: 
       objectReference: {fileID: 1180646454}
     - target: {fileID: 6940987737266353091, guid: 9688fd87dd5c55b42b658cc865cce087,

@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] GameObject textObj;
+    [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject playAgainButton;
+    [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject spawners;
     public void GameOver()
     {
         player.gameObject.SetActive(false);
-        textObj.gameObject.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
         playAgainButton.gameObject.SetActive(true);
+        pauseButton.gameObject.SetActive(false);
+        spawners.gameObject.SetActive(false);
     }
 
     public void Restart()
@@ -19,5 +23,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
         playAgainButton.gameObject.SetActive(false);
+        pauseButton.gameObject.SetActive(true);
+        spawners.gameObject.SetActive(true);
     }
 }
