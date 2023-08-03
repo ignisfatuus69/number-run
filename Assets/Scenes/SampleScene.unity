@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.28270707, g: 0.5940339, b: 0.7621765, a: 1}
+  m_IndirectSpecularColor: {r: 0.28009418, g: 0.59049106, b: 0.7620543, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2841,6 +2841,11 @@ PrefabInstance:
       propertyPath: textObj
       value: 
       objectReference: {fileID: 1180646454}
+    - target: {fileID: 6940987737266353091, guid: 9688fd87dd5c55b42b658cc865cce087,
+        type: 3}
+      propertyPath: spawners
+      value: 
+      objectReference: {fileID: 1518112326}
     - target: {fileID: 6940987737266353091, guid: 9688fd87dd5c55b42b658cc865cce087,
         type: 3}
       propertyPath: pauseButton
