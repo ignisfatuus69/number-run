@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class ResetPowerUp : PowerUp
 {
-    System.Action OnResetPowerUp;
     [SerializeField] int deductive=5;
-    [SerializeField] int min=5;
-    [SerializeField] int max=20;
+    [SerializeField] int minDeductive=5;
+    [SerializeField] int maxDeductive=20;
     [SerializeField] Text text;
     [SerializeField] GameObject particleEffect;
     [SerializeField] AudioClip resetSFX;
@@ -19,7 +18,7 @@ public class ResetPowerUp : PowerUp
     }
     public void initializeDeductive()
     {
-        deductive = Random.Range(min, max + 1);
+        deductive = Random.Range(minDeductive, maxDeductive + 1);
         deductive *= -1;
         text.text = deductive.ToString();
     }
@@ -32,8 +31,7 @@ public class ResetPowerUp : PowerUp
 
     protected override void Effect(Collider other)
     {
-        OnResetPowerUp?.Invoke();
-        OnGameObjectCollision?.Invoke(this.gameObject);
+        base.Effect(other);
         other.GetComponentInChildren<EquationChecker>().AddSum(deductive);
         this.gameObject.SetActive(false);
     }

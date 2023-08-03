@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float distanceTravelled { get; private set; } = 0;
     private Vector3 Direction;
     public Rigidbody rigidBody;
-    [SerializeField] private float sideMovementSpeed;
-    [SerializeField] private float swipeSensitivity;
+    [SerializeField] public float sideMovementSpeed;
+    [SerializeField] public float swipeSensitivity;
     [SerializeField] private float forwardSpeed;
     [SerializeField] private int distanceTravelledToSpdIncrease=150;
     [SerializeField] private float spdIncrement = 0.25f;

@@ -14,20 +14,24 @@ public abstract class ObjectPooler : MonoBehaviour
     public OnObjectSpawned EVT_OnObjectSpawned;
     public OnObjectPooled EVT_OnObjectPooled;
 
-    [SerializeField] private GameObject ObjectToSpawn;
-    [SerializeField] private int SpawnCount = 1;
-
-    [SerializeField] protected float poolTimer;
+    [SerializeField] protected GameObject ObjectToSpawn;
+    [SerializeField] protected int SpawnCount = 1;
 
     public List<GameObject> currentSpawnedObjects { get; protected set; } = new List<GameObject>();
     public List<GameObject> pooledObjects { get; protected set; } = new List<GameObject>();
 
-    [SerializeField] protected Vector3 SpawnPosition;
+    protected Vector3 currentSpawnPosition;
 
     public int totalSpawnsCount { get; private set; } = 0;
     public int totalPooledCount { get; protected set; } = 0;
+
+    [SerializeField] protected float minTimeSpawnInterval;
+    [SerializeField] protected float maxTimeSpawnInterval;
+    [SerializeField] protected float minSpawnPositionForwardOffset;
+    [SerializeField] protected float maxSpawnPositionForwardOffset;
     public virtual void Spawn()
     {
+        InitilizeBeforeSpawn();
         for (int i = 0; i < SpawnCount; i++)
         {
 
@@ -40,29 +44,38 @@ public abstract class ObjectPooler : MonoBehaviour
                 pooledObjects.RemoveAt(0);
                 obj.SetActive(true);
                 currentSpawnedObjects.Add(obj);
+                SetPoolingSpawnInitializations(obj);
 
             }
             else
             {
                 obj = Instantiate(ObjectToSpawn);
                 currentSpawnedObjects.Add(obj);
-                SetPoolingInitializations(obj);
+                SetInstantiateInitializations(obj);
             }
 
             totalSpawnsCount += 1;
             //Set Spawn Position
-            obj.transform.position = SpawnPosition;
+            SetSpawnPosition(obj);
 
             EVT_OnObjectSpawned.Invoke(obj);
         }
+        PostSpawningObjectsInitilizations();
     }
-    protected abstract void SetPoolingInitializations(GameObject obj);
 
+    protected abstract void InitilizeBeforeSpawn();
+    protected abstract void SetSpawnPosition(GameObject obj);
+    protected abstract void SetInstantiateInitializations(GameObject obj);
+
+    protected abstract void SetPoolingSpawnInitializations(GameObject obj);
+
+    protected abstract void PostSpawningObjectsInitilizations();
     protected virtual void Pool(GameObject obj)
     {
-        obj.gameObject.SetActive(false);
         pooledObjects.Add(obj.gameObject);
         currentSpawnedObjects.Remove(obj.gameObject);
+        EVT_OnObjectPooled?.Invoke(obj);
+        obj.gameObject.SetActive(false);
     }
 
 
