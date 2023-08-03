@@ -25,6 +25,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] float obstacleOffsetFromPlayer;
     [SerializeField] float spawnTimeDecrement;
     [SerializeField] float distanceTravelledBeforeDecreasingSpawnTime;
+    
     public List<Obstacle> currentSpawnedObjects { get; protected set; } = new List<Obstacle>();
     public List<Obstacle> pooledObjects { get; protected set; } = new List<Obstacle>();
 
@@ -35,12 +36,11 @@ public class ObstacleSpawner : MonoBehaviour
     public int currentAdditive { get; private set; }
     public Text additiveText;
     private List<Obstacle> currentSpawningObstacles = new List<Obstacle>();
-
     private List<int> numbersToAssign = new List<int>();
     public int randomAdditive { get; private set; }
 
     private bool hasDecreasedSpawnTime = false;
-    [SerializeField]float poolTimer = 20;
+    //[SerializeField]float poolTimer = 20;
     // Start is called before the first frame update
     private void Start()
     {
@@ -48,7 +48,6 @@ public class ObstacleSpawner : MonoBehaviour
         equationChecker.OnCurrentSumDeducted += DisableCurrentObstacles;
         equationChecker.OnCurrentSumDeducted += RefreshObstacleValues;
         equationChecker.OnCurrentSumAdded += RefreshObstacleValues;
-        //StartCoroutine(DestroyOldObstacles());
     }
 
     private void Update()
@@ -94,7 +93,8 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 obj = Instantiate(obstaclePrefab);
                 currentSpawnedObjects.Add(obj);
-              //  SetPoolingInitializations(obj);
+                obj.OnPlayerCollision += Pool;
+                obj.OnPlayerCollision += PoolRemainingObstacles;
             }
             obj.additive = randomAdditive;
             currentSpawningObstacles.Add(obj);
@@ -114,9 +114,6 @@ public class ObstacleSpawner : MonoBehaviour
         Debug.Log("THE RANDOM INDEX IS " + randomIndex);
         //Setting the correct answer
         currentSpawningObstacles[randomIndex].SetNumberValue(equationChecker.currentSum + randomAdditive);
-        //additiveText.text = (equationChecker.currentSum + "+" + randomAdditive.ToString());
-        //additiveText.transform.position = new Vector3(0, 1, playerMovement.transform.position.z + obstacleOffsetFromPlayer);
-        //Setting wrong answers for the rest of the obstacles
         randomAdditive -= 5;
         for (int i = 0; i < 10; i++)
         {
@@ -137,8 +134,6 @@ public class ObstacleSpawner : MonoBehaviour
         }
 
         numbersToAssign.Clear();
-
-        StartCoroutine(DelayedPool());
     }
 
     private void RefreshObstacleValues(int additive)
@@ -157,8 +152,6 @@ public class ObstacleSpawner : MonoBehaviour
                     CreateEquationObstacle();
                     Debug.Log("Spawn Obstacles");
                    // StartCoroutine(SpawnCoolDown());
-                
-            
         }
     }
     protected virtual void Pool(Obstacle obstacle)
@@ -169,13 +162,11 @@ public class ObstacleSpawner : MonoBehaviour
         EVT_OnObstaclePooled?.Invoke(obstacle);
     }
 
-    IEnumerator DelayedPool()
+    private void PoolRemainingObstacles(Obstacle obstacle)
     {
-        yield return new WaitForSeconds(poolTimer);
-
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
-            Pool(currentSpawnedObjects[i]);
+            Pool(currentSpawnedObjects[0]);
         }
     }
 
