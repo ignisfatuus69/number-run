@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldPowerUpSpawner : PowerUpSpawner
+public class SlowMoPowerUpSpawner : PowerUpSpawner
 {
+    
     [SerializeField] EquationChecker equationCheckerObj;
-    [SerializeField] GameObject shieldObj;
-
-    private void Start()
+    [SerializeField] PlayerMovement playerMovement;
+    void Start()
     {
         StartCoroutine(SpawnPowerUp());
     }
     protected override void SetInstantiateInitializations(GameObject obj)
     {
-        ShieldPowerUp shieldPowerup = obj.GetComponent<ShieldPowerUp>();
-        shieldPowerup.equationCheckerObj = this.equationCheckerObj;
-        shieldPowerup.shieldObj = this.shieldObj;
-        shieldPowerup.OnShieldEnded += Pool;
+        SlowMotionPowerUp slowMoPowerUp = obj.GetComponent<SlowMotionPowerUp>();
+        slowMoPowerUp.equationCheckerObj = this.equationCheckerObj;
+        slowMoPowerUp.playerMovement = this.playerMovement;
+        slowMoPowerUp.OnSlowMotionEnded += Pool;
     }
 
     IEnumerator SpawnPowerUp()
@@ -26,8 +26,7 @@ public class ShieldPowerUpSpawner : PowerUpSpawner
             yield return new WaitForSeconds(Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval));
             //temporarily adding a 50% chance to spawn to not spawn too many powerups
             int randomNumber = Random.Range(0, 2);
-            if (randomNumber == 0) CreatePowerUp();
+            if (randomNumber==0) CreatePowerUp();
         }
     }
 }
-

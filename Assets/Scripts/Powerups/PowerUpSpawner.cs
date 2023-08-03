@@ -49,12 +49,14 @@ public class PowerUpSpawner : ObjectPooler
     IEnumerator DelayedPool()
     {
         yield return new WaitForSeconds(poolTimer);
-        for (int i = 0; i < SpawnCount; i++)
+        if (currentSpawnedObjects?.Count > 0)
         {
-            Pool(currentSpawnedObjects[0]);
+            for (int i = 0; i < SpawnCount; i++)
+            {
+                Pool(currentSpawnedObjects[0]);
+            }
+            Debug.Log("Pooling object");
         }
-        Debug.Log("Pooling object");
-
     }
     protected override void SetPoolingSpawnInitializations(GameObject obj)
     {
