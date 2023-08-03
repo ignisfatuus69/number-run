@@ -2180,6 +2180,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
         type: 3}
+      propertyPath: equationChecker
+      value: 
+      objectReference: {fileID: 1126221956}
+    - target: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
       propertyPath: obstacleSpawner
       value: 
       objectReference: {fileID: 871227941}
