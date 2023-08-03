@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deductive: 5
-  minDeductive: 5
-  maxDeductive: 20
+  minDeductive: 1
+  maxDeductive: 15
   text: {fileID: 3003983929192980617}
   particleEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f,
     type: 3}

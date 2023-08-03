@@ -63,7 +63,7 @@ MonoBehaviour:
   slowDownValue: 0.5
   equationCheckerObj: {fileID: 0}
   playerMovement: {fileID: 0}
-  duration: 60
+  duration: 10
   particleEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f,
     type: 3}
   powerUpSFX: {fileID: 8300000, guid: eb3b111eb9e13c245b077f1e57bbf5ab, type: 3}
