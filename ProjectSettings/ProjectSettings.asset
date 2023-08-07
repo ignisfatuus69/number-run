@@ -156,7 +156,7 @@ PlayerSettings:
     iPhone: com.iOSchool.NumberDash
   buildNumber:
     Standalone: 0
-    iPhone: 1
+    iPhone: 3
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
