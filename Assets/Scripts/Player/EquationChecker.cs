@@ -7,6 +7,7 @@ public class EquationChecker : MonoBehaviour
 {
     public System.Action<int> OnCurrentSumDeducted;
     public System.Action<int> OnCurrentSumAdded;
+    public LineRenderer lineRenderer;
     [SerializeField] AudioClip correctSFX;
     [SerializeField] GameManager gameManager;
     [SerializeField] ObstacleSpawner obstacleSpawner;
@@ -55,6 +56,7 @@ public class EquationChecker : MonoBehaviour
 
     private void FixedUpdate()
     {
+        lineRenderer.SetPosition(0, this.transform.position);
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 30, obstacleLayerMask))

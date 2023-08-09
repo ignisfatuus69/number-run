@@ -70,13 +70,13 @@ public class ShieldPowerUp : PowerUp
             if (!equationCheckerObj.isImmuneToEquation) yield return null;
             if (equationCheckerObj?.correctObstacle != null)
             {
-                if (equationCheckerObj.correctObstacle.isActiveAndEnabled)
+                if (equationCheckerObj.correctObstacle.isActiveAndEnabled && equationCheckerObj.isApproachingObstacle)
                 {
-                    Vector2 TargetDirection = ((equationCheckerObj.correctObstacle.transform.position) -(equationCheckerObj.transform.position)).normalized;
-                    Debug.DrawLine(equationCheckerObj.transform.position, equationCheckerObj.transform.TransformDirection(new Vector3(TargetDirection.x,TargetDirection.y,-1f)) , Color.red, 5f);
-                    Debug.Log(equationCheckerObj.transform.TransformDirection(new Vector3(TargetDirection.x, TargetDirection.y, 1f)));
-                    yield return new WaitForSeconds(1f);
+                    equationCheckerObj.lineRenderer.enabled = true;
+                    equationCheckerObj.lineRenderer.SetPosition(1, equationCheckerObj.correctObstacle.transform.position);
                     equationCheckerObj.correctObstacle.PlayerInteraction(equationCheckerObj);
+                    yield return new WaitForSeconds(1f);
+                    equationCheckerObj.lineRenderer.enabled = false;
                     Debug.Log("Destroy obstacle");
                 }
             }
