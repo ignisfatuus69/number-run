@@ -93,8 +93,8 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 obj = Instantiate(obstaclePrefab);
                 currentSpawnedObjects.Add(obj);
-                obj.OnPlayerCollision += Pool;
-                obj.OnPlayerCollision += PoolRemainingObstacles;
+                obj.OnPlayerInteraction += Pool;
+                obj.OnPlayerInteraction += PoolRemainingObstacles;
             }
             obj.additive = randomAdditive;
             currentSpawningObstacles.Add(obj);
@@ -164,6 +164,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void PoolRemainingObstacles(Obstacle obstacle)
     {
+        if (currentSpawnedObjects.Count < 2) return;
         for (int i = 0; i < 2; i++)
         {
             Pool(currentSpawnedObjects[0]);

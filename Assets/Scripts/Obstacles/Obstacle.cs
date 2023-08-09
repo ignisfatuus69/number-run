@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Obstacle : MonoBehaviour
 {
-    public System.Action<Obstacle> OnPlayerCollision;
+    public System.Action<Obstacle> OnPlayerInteraction;
     //let obstacle spawner assign this
     public int additive=0;
     public int numberValue=0;
@@ -17,13 +17,18 @@ public class Obstacle : MonoBehaviour
         numberValueText.text = numberValue.ToString();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider player)
     {
-        Debug.Log("tesst");
+        Debug.Log("Interacted with player");
         Instantiate(correctPFX,transform.position,transform.rotation);
         //this.gameObject.SetActive(false);
-        other.GetComponentInChildren<EquationChecker>().CheckEquation(this.additive, this.numberValue,this.additive);
-        OnPlayerCollision?.Invoke(this);
-        Debug.Log("Checking answers");
+        PlayerInteraction(player.GetComponentInChildren<EquationChecker>());
+    }
+
+    public void PlayerInteraction(EquationChecker player)
+    {
+        Debug.Log("Obstacle has triggered the checking of the equation");
+        player.CheckEquation(this.additive, this.numberValue, this.additive);
+        OnPlayerInteraction?.Invoke(this);
     }
 }
