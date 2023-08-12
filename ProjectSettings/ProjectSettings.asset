@@ -700,7 +700,11 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: 
+    4: GleyIAPiOS
+    7: 
+    14: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -779,11 +783,11 @@ PlayerSettings:
     Build: 0
     Collab: 0
     Game Performance: 0
-    Legacy Analytics: 0
-    Purchasing: 0
+    Legacy Analytics: 1
+    Purchasing: 1
     UDP: 0
     UNet: 1
-    Unity Ads: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -797,11 +801,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 22aeeb77-2d72-4ac6-8525-ee297a40d502
+  cloudProjectId: 91f949f2-6424-4933-93a8-ab4bfd6e8a3a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Number Dash (2)
-  organizationId: ioacademics
+  projectName: Number Dash
+  organizationId: ioschool-inc
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
