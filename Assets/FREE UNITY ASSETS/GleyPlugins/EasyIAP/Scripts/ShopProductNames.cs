@@ -1,4 +1,8 @@
 public enum ShopProductNames
 {
-RemoveAds,
+    RemoveAds,
+    UnlockLevel,
+    Subscription,
+    Consumable1,
+    Consumable2,
 }
