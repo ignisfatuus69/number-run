@@ -95,11 +95,11 @@ public class GameMenu : MonoBehaviour
         subscribedText.text = "Subscription active " + Save.IsSubscriptionBought();
         if (Save.UnlockLevelWasBought() == false)
         {
-            openLevelButton.interactable = false;
+            //openLevelButton.interactable = false;
         }
         else
         {
-            openLevelButton.interactable = true;
+           // openLevelButton.interactable = true;
         }
     }
 
