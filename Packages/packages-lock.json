@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.qonversion.unity": {
+      "version": "https://github.com/qonversion/unity-sdk.git#6.0.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c602e3c68bfd269c034a8dc62d694df5b6f8bfcf"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
