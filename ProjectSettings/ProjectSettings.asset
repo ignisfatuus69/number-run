@@ -783,8 +783,8 @@ PlayerSettings:
     Build: 0
     Collab: 0
     Game Performance: 0
-    Legacy Analytics: 1
-    Purchasing: 1
+    Legacy Analytics: 0
+    Purchasing: 0
     UDP: 0
     UNet: 1
     Unity Ads: 0
@@ -801,11 +801,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 91f949f2-6424-4933-93a8-ab4bfd6e8a3a
+  cloudProjectId: 451e63e4-4c39-4316-9fb3-f3becaa4f14a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Number Dash
-  organizationId: ioschool-inc
+  projectName: Number Dash (4)
+  organizationId: ioacademics
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
