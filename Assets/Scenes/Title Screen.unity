@@ -951,6 +951,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 983551966}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &401007086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,6 +1877,12 @@ MonoBehaviour:
   m_flatMargin: 0
   m_horizonWaves: 0
   m_horizonWaveFrequency: 0
+--- !u!1 &983551966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3757355639662718418, guid: 17fa3320302901a4182e145149e10f35,
+    type: 3}
+  m_PrefabInstance: {fileID: 750564277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1104369133
 GameObject:
   m_ObjectHideFlags: 3
