@@ -5,6 +5,7 @@ public class InterstetialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
 {
     [SerializeField] string _androidAdUnitId = "Interstitial_Android";
     [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
+    public bool adsShown = true;
     string _adUnitId;
 
     void Awake()
@@ -28,6 +29,7 @@ public class InterstetialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     {
         // Note that if the ad content wasn't previously loaded, this method will fail
         Debug.Log("Showing Ad: " + _adUnitId);
+        if (!adsShown) return;
         Advertisement.Show(_adUnitId, this);
     }
 
