@@ -21,6 +21,7 @@ public class QonversionManager : MonoBehaviour
         QonversionConfig newQConfig= qConfigBuilder.Build();
         Qonversion.Initialize(newQConfig);
         Debug.Log(newQConfig.ProjectKey);
+        Qonversion.GetSharedInstance().SyncPurchases();
     }
     // Start is called before the first frame update
     void Start()
