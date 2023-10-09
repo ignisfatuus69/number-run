@@ -8,103 +8,121 @@ using UnityEngine.UI;
 public class QonversionManager : MonoBehaviour
 {
 
-    public TextMeshProUGUI premiumText;
+    public Text premiumText;
     public Button premiumButton;
-    public Button chocolateCookieButton;
-    public InterstetialAds interstitialAdExample;
+    public Button removeAdsButton;
+    public InterstetialAds intAdsObject;
     public GameManager gameManager;
+
+    void Awake()
+    {
+        QonversionConfigBuilder qConfigBuilder = new QonversionConfigBuilder("VSOFFsHF", LaunchMode.Analytics);
+        QonversionConfig newQConfig = qConfigBuilder.Build();
+        Qonversion.Initialize(newQConfig);
+        Debug.Log(newQConfig.ProjectKey);
+        Qonversion.GetSharedInstance().SyncPurchases();
+        removeAdsButton.onClick.AddListener(() => { PressedBuyProducts(); });
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         premiumText.text = "No Offerings Available";
-        //ShowOfferings();
+        ShowOfferings();
     }
 
+    // Update is called once per frame
+    public void ShowOfferings()
+    {
+        premiumText.text = "Getting Offerings";
+        try
+        {
+            Qonversion.GetSharedInstance().Offerings((offerings, error) =>
+            {
+                premiumText.text = " Offerings";
+                if (error == null)
+                {
+                    if (offerings.OfferingForID("Subscription") != null)
+                    {
+                        premiumText.text = "Get the " + offerings.OfferingForID("Subscription").Id + " Subscription";
+                        /*DISCLAIMER: Remember that for the MakePurchase method you should always use the ProductID to search and purchase a product! Our case is using the offeringID only for demonstration purposes! 
+                        This line would be the more correct one.
+                        MakePurchase(offerings.offeringForID("premium").Products.First)*/
+                        premiumButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Subscription").Id); });
+                    }
+                    if (offerings.OfferingForID("Remove_Ads") != null)
+                    {
+                        removeAdsButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Remove_Ads").Id); });
+                    }
+                }
+                else
+                {
+                    premiumText.text = "error -> " + error;
+                }
+            });
+        }
+        catch
+        {
+            premiumText.text = "getting offerings broke";
+        }
 
+    }
+    
+    public void PressedBuyProducts()
+    {
+        Debug.Log("Buying");
+    }
 
-    //public void ShowOfferings()
-    //{
-    //    premiumText.text = "Getting Offerings";
-    //    try{
-    //        Qonversion.GetSharedInstance().Offerings((offerings, error) =>
-    //        {
-    //            premiumText.text = " Offerings";
-    //            if (error == null)
-    //            {
-    //                if (offerings.OfferingForID("premium") != null)
-    //                {
-    //                    premiumText.text = "Get the " + offerings.OfferingForID("premium").Id + " Subscription";
-    //                    /*DISCLAIMER: Remember that for the MakePurchase method you should always use the ProductID to search and purchase a product! Our case is using the offeringID only for demonstration purposes! 
-    //                    This line would be the more correct one.
-    //                    MakePurchase(offerings.offeringForID("premium").Products.First)*/
-    //                    premiumButton.onClick.AddListener(() => { MakePurchase(offerings.off); });
-    //                }
-    //                if (offerings.OfferingForID("chocolatechipcookie") != null)
-    //                {
-    //                    chocolateCookieButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("chocolatechipcookie").Id); });
-    //                }
-    //            }
-    //            else
-    //            {
-    //                premiumText.text = "error -> " + error;
-    //            }
-    //        });
-    //    }
-    //    catch
-    //    {
-    //        premiumText.text = "getting offerings broke";
-    //    }
-       
-    //}
+    public void MakePurchase(string productID)
+    {
+        premiumText.text = "buying" + productID;
 
+        Qonversion.GetSharedInstance().Purchase(productID, (permissions, error,isCancelled) =>
+        {
+            if (error == null)
+            {
+                premiumText.text = "bought" + productID;
+                CheckPermission(permissions.ToString());
+            }
+            else
+            {
+                premiumText.text = "error -> " + error;
+            }
+            if (isCancelled)
+            {
+                premiumText.text = "cancelled purchased:  -> " + isCancelled;
+            }
+        });;
+    }
 
-    //public void MakePurchase(Product product)  
-    //{
-    //    premiumText.text = "buying " + productID;
-
-    //    Qonversion.GetSharedInstance().Purchase(productID, (entitlements, error) =>
-    //    {
-    //        if (error == null)
-    //        {
-    //            premiumText.text = "bought " + productID;
-    //            CheckPermission(entitlements);
-    //        }
-    //        else
-    //        {
-    //            premiumText.text = "error -> " + error;
-    //        }
-    //    });
-    //}
-
-    public void CheckPermission(string entitlementId)
+    public void CheckPermission(string entitlementsId)
     {
         Qonversion.GetSharedInstance().CheckEntitlements((permissions, error) =>
         {
             if (error == null)
             {
-                if (permissions.TryGetValue(entitlementId, out Entitlement plus) && plus.IsActive)
+                if (permissions.TryGetValue(entitlementsId, out Entitlement plus) && plus.IsActive)
                 {
-                    if (entitlementId == "premium")
+                    if (entitlementsId == "Remove_Ads")
                     {
-                        premiumText.text = "Got the Subscription!";
-                        interstitialAdExample.adsShown = false;
+                        premiumText.text = "Got the removeads!";
+                        intAdsObject.adsShown = false;
                     }
-                    //else if (entitlementId == "chocolatechipcookie")
+                    //else if (entitlementsId == "Remove_Ads")
                     //{
-                    //    gameManager.swapAllowed = true;
+                    //    intAdsObject.adsShown = true;
                     //}
                 }
                 else
                 {
-                    if (entitlementId == "premium")
-                    {
-                        interstitialAdExample.adsShown = true;
-                    }
-                    //else if (entitlementId == "chocolatechipcookie")
+                    //if (entitlementsId == "Subscription")
                     //{
-                    //    gameManager.swapAllowed = false;
+                    //    intAdsObject.adsShown = false;
                     //}
+                    if (entitlementsId == "Remove_Ads")
+                    {
+                        intAdsObject.adsShown = true;
+                    }
                 }
             }
             else
@@ -113,5 +131,3 @@ public class QonversionManager : MonoBehaviour
         });
     }
 }
-
-
