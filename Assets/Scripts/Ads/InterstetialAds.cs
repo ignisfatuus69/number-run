@@ -20,6 +20,11 @@ public class InterstetialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     public void LoadAd()
     {
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
+        if (!adsShown)
+        {
+            Debug.Log("Not loading ads");
+            return;
+        }
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
     }
@@ -29,7 +34,12 @@ public class InterstetialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     {
         // Note that if the ad content wasn't previously loaded, this method will fail
         Debug.Log("Showing Ad: " + _adUnitId);
-        if (!adsShown) return;
+        if (!adsShown)
+        {
+            Debug.Log("Not showing ads");
+            return;
+        }
+        Debug.Log("Showing ads");
         Advertisement.Show(_adUnitId, this);
     }
 

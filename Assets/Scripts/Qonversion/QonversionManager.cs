@@ -79,7 +79,7 @@ public class QonversionManager : MonoBehaviour
             if (error == null)
             {
                 premiumText.text = "bought" + productID;
-                CheckPermission(permissions.ToString());
+                CheckAdsPermission(permissions.ToString());
             }
             else
             {
@@ -92,7 +92,7 @@ public class QonversionManager : MonoBehaviour
         });;
     }
 
-    public void CheckPermission(string entitlementsId)
+    public void CheckAdsPermission(string entitlementsId)
     {
         Qonversion.GetSharedInstance().CheckEntitlements((permissions, error) =>
         {
@@ -105,17 +105,9 @@ public class QonversionManager : MonoBehaviour
                         premiumText.text = "Got the removeads!";
                         intAdsObject.adsShown = false;
                     }
-                    //else if (entitlementsId == "Remove_Ads")
-                    //{
-                    //    intAdsObject.adsShown = true;
-                    //}
                 }
                 else
                 {
-                    //if (entitlementsId == "Subscription")
-                    //{
-                    //    intAdsObject.adsShown = false;
-                    //}
                     if (entitlementsId == "Remove_Ads")
                     {
                         intAdsObject.adsShown = true;

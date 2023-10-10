@@ -12,6 +12,7 @@ public class UnityBannerAd : MonoBehaviour
 
     [SerializeField] string _androidAdUnitId = "Banner_Android";
     [SerializeField] string _iOSAdUnitId = "Banner_iOS";
+    public bool canShowAds;
     string _adUnitId = null; // This will remain null for unsupported platforms.
 
     void Start()
@@ -65,6 +66,12 @@ public class UnityBannerAd : MonoBehaviour
     // Implement a method to call when the Show Banner button is clicked:
     void ShowBannerAd()
     {
+        if (!canShowAds)
+        {
+            Debug.Log("Cannot show banner ads, has bought anti ads");
+            return;
+        }
+        Debug.Log("Showing banner ads, hasnt bought anti ads");
         // Set up options to notify the SDK of show events:
         BannerOptions options = new BannerOptions
         {
