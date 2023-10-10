@@ -16,7 +16,7 @@ public class QonversionManager : MonoBehaviour
 
     void Awake()
     {
-        QonversionConfigBuilder qConfigBuilder = new QonversionConfigBuilder("VSOFFsHF", LaunchMode.Analytics);
+        QonversionConfigBuilder qConfigBuilder = new QonversionConfigBuilder("F5fNlvs8EyR9pupP81C91d_Kr9j_1ck0", LaunchMode.Analytics);
         QonversionConfig newQConfig = qConfigBuilder.Build();
         Qonversion.Initialize(newQConfig);
         Debug.Log(newQConfig.ProjectKey);
@@ -45,9 +45,6 @@ public class QonversionManager : MonoBehaviour
                     if (offerings.OfferingForID("Subscription") != null)
                     {
                         premiumText.text = "Get the " + offerings.OfferingForID("Subscription").Id + " Subscription";
-                        /*DISCLAIMER: Remember that for the MakePurchase method you should always use the ProductID to search and purchase a product! Our case is using the offeringID only for demonstration purposes! 
-                        This line would be the more correct one.
-                        MakePurchase(offerings.offeringForID("premium").Products.First)*/
                         premiumButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Subscription").Id); });
                     }
                     if (offerings.OfferingForID("Remove_Ads") != null)
