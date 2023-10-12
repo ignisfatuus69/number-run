@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PowerUpSpawner : ObjectPooler
 {
+    public System.Action OnPowerUpSpawned;
+    public System.Action OnPowerUpCantSpawn;
+    [SerializeField] int spawnChance;
     [SerializeField] Transform playerTransform;
     private float currentPowerUpForwardSpawnOffset;
     private float currentSpawnIntervalTime=10;
@@ -23,6 +26,11 @@ public class PowerUpSpawner : ObjectPooler
         else Debug.Log("Not spawning powerup");
     }
 
+    protected virtual void SetSpawnChance()
+    {
+        float randomNumber = Random.Range(0, 100);
+        if (randomNumber <= spawnChance) isSpawningPowerUp = true;
+    }
     protected override void SetSpawnPosition(GameObject obj)
     {
         currentSpawnPosition = new Vector3(Random.Range(-2, 2 + 1), 0.25f, (playerTransform.position.z + currentPowerUpForwardSpawnOffset));
@@ -63,10 +71,21 @@ public class PowerUpSpawner : ObjectPooler
        // throw new System.NotImplementedException();
     }
 
-    protected virtual void SetConditionForSpawning() 
+    protected virtual void SetConditionForSpawning()
     {
-        int randomNumber = Random.Range(0, 2);
-        if (randomNumber == 0) isSpawningPowerUp = true;
-        else isSpawningPowerUp = false;
+        SetSpawnChance();
+    }
+
+    public void SpawnPowerUp()
+    {
+        StartCoroutine(SpawnPowerUpInSeconds());
+    }
+    private IEnumerator SpawnPowerUpInSeconds()
+    {
+        Debug.Log("wait muna");
+
+        yield return new WaitForSeconds(Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval));
+        CreatePowerUp();
+        OnPowerUpSpawned?.Invoke();
     }
 }

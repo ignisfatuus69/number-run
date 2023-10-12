@@ -301,6 +301,18 @@ MonoBehaviour:
   coinInventory: {fileID: 2029709587}
   equationChecker: {fileID: 1126221956}
   scoreText: {fileID: 1612035956}
+--- !u!114 &472265315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323734505833721307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61d524be08f3ac468be1cf500edd633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &542121873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2977331798285855920, guid: 06afd4631df45d847ba60de57c958200,
@@ -1072,6 +1084,65 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!1 &1207817933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207817934}
+  - component: {fileID: 1207817935}
+  m_Layer: 0
+  m_Name: Powerup Selector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207817934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207817933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1518112327}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1207817935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207817933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34db2b019cdf9a4ea8b69c85643f3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpSpawners:
+  - {fileID: 472265315}
+  - {fileID: 2039843444}
+  - {fileID: 1242277753}
+--- !u!114 &1242277753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2051557298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f381ebc7c18cca4498b5159b66c343cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1273659191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1586,7 @@ Transform:
   - {fileID: 2977331797695948691}
   - {fileID: 2051557299}
   - {fileID: 1670600275170923863}
+  - {fileID: 1207817934}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1967,6 +2039,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensity: 0
   time: 0
+--- !u!114 &2039843444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6037630038053462706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796bb9055f565dd41875d2342acda140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2051557298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1977,6 +2061,10 @@ PrefabInstance:
     - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
       propertyPath: poolTimer
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
+      propertyPath: spawnChance
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
       propertyPath: playerMovement
@@ -1996,7 +2084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2051557301, guid: c957c270b149bdc4082ac35b58d11f7b, type: 3}
       propertyPath: minTimeSpawnInterval
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8833920591045313825, guid: c957c270b149bdc4082ac35b58d11f7b,
         type: 3}
@@ -2363,6 +2451,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
         type: 3}
+      propertyPath: spawnChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
       propertyPath: equationChecker
       value: 
       objectReference: {fileID: 1126221956}
@@ -2376,6 +2469,16 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 385317836}
+    - target: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: maxTimeSpawnInterval
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
+        type: 3}
+      propertyPath: minTimeSpawnInterval
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1323734505833721309, guid: 06afd4631df45d847ba60de57c958200,
         type: 3}
       propertyPath: currentSumBeforeSpawning
@@ -2830,6 +2933,21 @@ PrefabInstance:
       propertyPath: equationChecker
       value: 
       objectReference: {fileID: 1126221956}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[0].y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[1].y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255693822436557599, guid: 2308b2bceb93fa4469fd467df91ea128,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[2].y
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2308b2bceb93fa4469fd467df91ea128, type: 3}
 --- !u!1001 &6037630038053462706
@@ -2906,6 +3024,11 @@ PrefabInstance:
       objectReference: {fileID: 699220407}
     - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
+      propertyPath: spawnChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
+        type: 3}
       propertyPath: obstacleSpawner
       value: 
       objectReference: {fileID: 871227941}
@@ -2922,12 +3045,12 @@ PrefabInstance:
     - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
       propertyPath: maxTimeSpawnInterval
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8833920591045313828, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
       propertyPath: minTimeSpawnInterval
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8833920591045313831, guid: efb6d23f0cf29d54781d489f07b25fa1,
         type: 3}
