@@ -6,7 +6,6 @@ public class PowerUpSpawner : ObjectPooler
 {
     public System.Action OnPowerUpSpawned;
     public System.Action OnPowerUpCantSpawn;
-    [SerializeField] int spawnChance;
     [SerializeField] Transform playerTransform;
     private float currentPowerUpForwardSpawnOffset;
     private float currentSpawnIntervalTime=10;
@@ -14,8 +13,6 @@ public class PowerUpSpawner : ObjectPooler
     [SerializeField] float poolTimer = 20;
     public void CreatePowerUp()
     {
-        SetConditionForSpawning();
-
         if (isSpawningPowerUp)
         {
             Debug.Log("Spawning powerup");
@@ -24,12 +21,6 @@ public class PowerUpSpawner : ObjectPooler
             return;
         }
         else Debug.Log("Not spawning powerup");
-    }
-
-    protected virtual void SetSpawnChance()
-    {
-        float randomNumber = Random.Range(0, 100);
-        if (randomNumber <= spawnChance) isSpawningPowerUp = true;
     }
     protected override void SetSpawnPosition(GameObject obj)
     {
@@ -73,17 +64,22 @@ public class PowerUpSpawner : ObjectPooler
 
     protected virtual void SetConditionForSpawning()
     {
-        SetSpawnChance();
+  //      SetSpawnChance();
     }
 
     public void SpawnPowerUp()
     {
+        SetConditionForSpawning();
+        if (!isSpawningPowerUp)
+        {
+            Debug.Log("Cant spawn power up, choosing another one");
+            OnPowerUpCantSpawn?.Invoke();
+            return;
+        }
         StartCoroutine(SpawnPowerUpInSeconds());
     }
     private IEnumerator SpawnPowerUpInSeconds()
     {
-        Debug.Log("wait muna");
-
         yield return new WaitForSeconds(Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval));
         CreatePowerUp();
         OnPowerUpSpawned?.Invoke();

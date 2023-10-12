@@ -20,6 +20,7 @@ public class SlowMotionPowerUp : PowerUp
     {
         isActive = false;
         meshRenderer.enabled = true;
+        currentDuration = duration;
     }
 
     IEnumerator EnableSlowMotion()
@@ -66,6 +67,7 @@ public class SlowMotionPowerUp : PowerUp
     {
         while (currentDuration > 0)
         {
+            Debug.Log("Counting down for slow mo");
             yield return new WaitForSeconds(0.1f);
             currentDuration -= 0.1f;
 

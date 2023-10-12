@@ -21,6 +21,6 @@ public class PowerUpSelector : MonoBehaviour
     {
         int randomNumber = UnityEngine.Random.Range(0, 3);
         powerUpSpawners[randomNumber].SpawnPowerUp();
-
+        Debug.Log("The selected random number for powerup is:" + randomNumber);
     }
 }
