@@ -9,18 +9,15 @@ public class PowerUpSpawner : ObjectPooler
     [SerializeField] Transform playerTransform;
     private float currentPowerUpForwardSpawnOffset;
     private float currentSpawnIntervalTime=10;
-    protected bool isSpawningPowerUp = false;
+    protected bool isSpawningPowerUp = true;
     [SerializeField] float poolTimer = 20;
     public void CreatePowerUp()
     {
         if (isSpawningPowerUp)
         {
-            Debug.Log("Spawning powerup");
             Spawn();
-            isSpawningPowerUp = false;
             return;
         }
-        else Debug.Log("Not spawning powerup");
     }
     protected override void SetSpawnPosition(GameObject obj)
     {
@@ -80,6 +77,7 @@ public class PowerUpSpawner : ObjectPooler
     }
     private IEnumerator SpawnPowerUpInSeconds()
     {
+        Debug.Log("spawning power up");
         yield return new WaitForSeconds(Random.Range(minTimeSpawnInterval, maxTimeSpawnInterval));
         CreatePowerUp();
         OnPowerUpSpawned?.Invoke();

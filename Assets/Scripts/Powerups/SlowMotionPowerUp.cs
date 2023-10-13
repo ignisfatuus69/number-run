@@ -9,12 +9,10 @@ public class SlowMotionPowerUp : PowerUp
     [SerializeField] float slowDownValue;
     [SerializeField] public EquationChecker equationCheckerObj;
     [SerializeField] public PlayerMovement playerMovement;
-    [SerializeField] float duration;
     [SerializeField] GameObject particleEffect;
     [SerializeField] AudioClip powerUpSFX;
     public bool isActive { get; private set; } = false;
     float originalSpeedValue;
-    float currentDuration;
     [SerializeField] MeshRenderer meshRenderer;
     private void OnEnable()
     {

@@ -7,8 +7,6 @@ public class ShieldPowerUp : PowerUp
 {
     public System.Action<GameObject> OnShieldEnded;
     public bool isActive { get; private set; } = false;
-    [SerializeField] float distanceBeforeActivation;
-    [SerializeField] float duration;
     [SerializeField] GameObject particleEffect;
     [SerializeField] AudioClip powerUpSFX;
     [SerializeField] MeshRenderer meshRenderer;
@@ -16,7 +14,6 @@ public class ShieldPowerUp : PowerUp
 
     [HideInInspector]public GameObject shieldObj;
     public EquationChecker equationCheckerObj;
-    float currentDuration;
 
     private void OnEnable()
     {
@@ -48,6 +45,7 @@ public class ShieldPowerUp : PowerUp
     {
         while (currentDuration > 0)
         {
+            shieldObj.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.1f);
             currentDuration -= 0.1f;
             if (currentDuration <= 0)
@@ -58,6 +56,7 @@ public class ShieldPowerUp : PowerUp
                 shieldObj.gameObject.SetActive(false);
                 isActive = false;
                 StopAllCoroutines();
+                break;
             }
         }
     }
