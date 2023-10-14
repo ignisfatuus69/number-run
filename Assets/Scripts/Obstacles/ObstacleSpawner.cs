@@ -111,7 +111,6 @@ public class ObstacleSpawner : MonoBehaviour
 
         //INITIALIZING VALUES FOR EACH SPAWNED OBJECTS
         int randomIndex = Random.Range(0, currentSpawningObstacles.Count);
-        Debug.Log("THE RANDOM INDEX IS " + randomIndex);
         //Setting the correct answer
         currentSpawningObstacles[randomIndex].SetNumberValue(equationChecker.currentSum + randomAdditive);
         randomAdditive -= 5;
@@ -150,8 +149,6 @@ public class ObstacleSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minSpawnTime,maxSpawnTime));
                     CreateEquationObstacle();
-                    Debug.Log("Spawn Obstacles");
-                   // StartCoroutine(SpawnCoolDown());
         }
     }
     protected virtual void Pool(Obstacle obstacle)

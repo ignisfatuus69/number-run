@@ -9,19 +9,27 @@ public class PowerUpSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnForNextSpawner();
+
         for (int i = 0; i < powerUpSpawners.Length; i++)
         {
             powerUpSpawners[i].OnPowerUpSpawned += SpawnForNextSpawner;
-            powerUpSpawners[i].OnPowerUpCantSpawn += SpawnForNextSpawner;
+            powerUpSpawners[i].OnPowerUpCantSpawn += SpawnShieldOrSlowmo;
         }
+        SpawnForNextSpawner();
     }
 
     void SpawnForNextSpawner()
     {
-        Debug.Log("choose next spawner");
+        Debug.Log("Choosing next power up spawner");
         int randomNumber = UnityEngine.Random.Range(0, 3);
-        powerUpSpawners[randomNumber].SpawnPowerUp();
+        powerUpSpawners[0].SpawnPowerUp();
         Debug.Log("The selected random number for powerup is:" + randomNumber);
+    }
+    void SpawnShieldOrSlowmo()
+    {
+        Debug.Log("Spawning another kind of power up instead ");
+        //this makes sure that the next one ensures we spawn a power up cuz we already failed spawning at index 0
+        int randomNumber = UnityEngine.Random.Range(1, 3);
+        powerUpSpawners[randomNumber].SpawnPowerUp();
     }
 }

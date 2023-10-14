@@ -18,7 +18,6 @@ public class TileManager : ObjectPooler
         if (hasSpawned) return;
         if (playerTransform.position.z - 35 > zSpawnOffset - (numberOfTiles * tileLength))
         {
-            Debug.Log("Spawning Tile");
             Spawn();
             hasSpawned = true;
             StartCoroutine(SpawnCooldown());

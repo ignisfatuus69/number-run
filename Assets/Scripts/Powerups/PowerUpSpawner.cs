@@ -6,6 +6,7 @@ public class PowerUpSpawner : ObjectPooler
 {
     public System.Action OnPowerUpSpawned;
     public System.Action OnPowerUpCantSpawn;
+
     [SerializeField] Transform playerTransform;
     private float currentPowerUpForwardSpawnOffset;
     private float currentSpawnIntervalTime=10;
@@ -15,6 +16,7 @@ public class PowerUpSpawner : ObjectPooler
     {
         if (isSpawningPowerUp)
         {
+            Debug.Log("spawned powerup");
             Spawn();
             return;
         }
@@ -69,8 +71,8 @@ public class PowerUpSpawner : ObjectPooler
         SetConditionForSpawning();
         if (!isSpawningPowerUp)
         {
-            Debug.Log("Cant spawn power up, choosing another one");
             OnPowerUpCantSpawn?.Invoke();
+            Debug.Log("Cant spawn power up, choosing another one");
             return;
         }
         StartCoroutine(SpawnPowerUpInSeconds());

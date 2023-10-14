@@ -18,6 +18,7 @@ public class ShieldPowerUp : PowerUp
     private void OnEnable()
     {
         meshRenderer.enabled = true;
+        isActive = true;
     }
     protected override void Effect(Collider other)
     {

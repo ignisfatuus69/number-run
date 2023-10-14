@@ -2533,17 +2533,17 @@ PrefabInstance:
         type: 3}
       propertyPath: powerUpSpawners.Array.data[0]
       value: 
-      objectReference: {fileID: 2039843444}
+      objectReference: {fileID: 472265315}
     - target: {fileID: 1481731252715528192, guid: e913e52966e66e148ac723ee0552a3ea,
         type: 3}
       propertyPath: powerUpSpawners.Array.data[1]
       value: 
-      objectReference: {fileID: 1242277753}
+      objectReference: {fileID: 2039843444}
     - target: {fileID: 1481731252715528192, guid: e913e52966e66e148ac723ee0552a3ea,
         type: 3}
       propertyPath: powerUpSpawners.Array.data[2]
       value: 
-      objectReference: {fileID: 472265315}
+      objectReference: {fileID: 1242277753}
     - target: {fileID: 1481731252715528193, guid: e913e52966e66e148ac723ee0552a3ea,
         type: 3}
       propertyPath: m_RootOrder
