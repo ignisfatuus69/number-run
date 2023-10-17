@@ -31,15 +31,16 @@ public class SlowMotionPowerUp : PowerUp
                 if (equationCheckerObj.distanceToObstacle > 0 && equationCheckerObj.distanceToObstacle <= distanceBeforeActivation)
                 {
                     Time.timeScale = slowDownValue;
-                    Time.fixedDeltaTime = Time.timeScale * 0.01f;
+                   Time.fixedDeltaTime = Time.timeScale * 0.01f;
                     playerMovement.sideMovementSpeed = 100;
-                    playerMovement.swipeSensitivity = 1000;
+                    playerMovement.swipeSensitivity = 1250;
                 }
                 
             }
             else if (!equationCheckerObj.isApproachingObstacle)
             {
                 Time.timeScale = 1;
+                Time.fixedDeltaTime = 0.02f;
                 playerMovement.sideMovementSpeed = 50;
                 playerMovement.swipeSensitivity = 500;
             }

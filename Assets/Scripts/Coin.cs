@@ -5,13 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class Coin : MonoBehaviour
 {
+    [SerializeField] float rotationSpeed = 0.5f;
     public System.Action<GameObject> OnHitPlayer;
     public int coinValue = 1;
     //public Score ScoreObj;
 
     private void Update()
     {
-        gameObject.transform.Rotate(0, 0, 0.5f);
+        gameObject.transform.Rotate(0, 0, rotationSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
