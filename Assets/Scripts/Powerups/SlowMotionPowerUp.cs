@@ -79,6 +79,7 @@ public class SlowMotionPowerUp : PowerUp
                 isActive = false;
                 playerMovement.sideMovementSpeed = 50;
                 playerMovement.swipeSensitivity = 500;
+                OnPowerUpEnded?.Invoke(this);
             }
         }
     }

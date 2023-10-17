@@ -11,14 +11,13 @@ public class ShieldPowerUp : PowerUp
     [SerializeField] AudioClip powerUpSFX;
     [SerializeField] MeshRenderer meshRenderer;
     //Have these values set by the spawners
-
-    [HideInInspector]public GameObject shieldObj;
     public EquationChecker equationCheckerObj;
 
     private void OnEnable()
     {
+        StopAllCoroutines();
         meshRenderer.enabled = true;
-        isActive = true;
+        isActive = false;
     }
     protected override void Effect(Collider other)
     {
@@ -27,7 +26,6 @@ public class ShieldPowerUp : PowerUp
         StopAllCoroutines();
         currentDuration = duration;
         base.Effect(other);
-        shieldObj.gameObject.SetActive(true);
         equationCheckerObj.isImmuneToEquation = true;
         StartCoroutine(DestroyObstacleWithLazer());
         StartCoroutine(CountDownToDuration());
@@ -46,7 +44,6 @@ public class ShieldPowerUp : PowerUp
     {
         while (currentDuration > 0)
         {
-            shieldObj.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.1f);
             currentDuration -= 0.1f;
             if (currentDuration <= 0)
@@ -54,9 +51,10 @@ public class ShieldPowerUp : PowerUp
                 Debug.Log("Shield has worn off");
                 equationCheckerObj.isImmuneToEquation = false;
                 OnShieldEnded?.Invoke(this.gameObject);
-                shieldObj.gameObject.SetActive(false);
                 isActive = false;
+                equationCheckerObj.lineRenderer.enabled = false;
                 StopAllCoroutines();
+                OnPowerUpEnded?.Invoke(this);
                 break;
             }
         }

@@ -10,7 +10,6 @@ public class ShieldPowerUpSpawner : PowerUpSpawner
     {
         ShieldPowerUp shieldPowerup = obj.GetComponent<ShieldPowerUp>();
         shieldPowerup.equationCheckerObj = this.equationCheckerObj;
-        shieldPowerup.shieldObj = this.shieldObj;
         shieldPowerup.OnShieldEnded += Pool;
     }
 
