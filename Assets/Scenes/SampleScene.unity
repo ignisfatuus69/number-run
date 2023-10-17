@@ -2352,17 +2352,17 @@ PrefabInstance:
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
@@ -2372,12 +2372,12 @@ PrefabInstance:
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
@@ -2632,6 +2632,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Equation Checker
       objectReference: {fileID: 0}
+    - target: {fileID: 1588859533809500394, guid: 5f978c76603aa214c92cfb629618c0fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1588859533809500396, guid: 5f978c76603aa214c92cfb629618c0fe,
         type: 3}
       propertyPath: m_RootOrder
@@ -2708,8 +2713,8 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588859532716902506}
   m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 0
   m_LightProbeUsage: 0
@@ -2763,9 +2768,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 0}
+      key1: {r: 1, g: 0.66788965, b: 0.4470588, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -2780,16 +2785,16 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
+      atime1: 4626
+      atime2: 56669
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 4
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0

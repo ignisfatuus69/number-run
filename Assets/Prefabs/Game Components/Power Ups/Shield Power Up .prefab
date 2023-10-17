@@ -64,7 +64,6 @@ MonoBehaviour:
     type: 3}
   powerUpSFX: {fileID: 8300000, guid: eb3b111eb9e13c245b077f1e57bbf5ab, type: 3}
   meshRenderer: {fileID: 2816605059906959775}
-  shieldObj: {fileID: 0}
   equationCheckerObj: {fileID: 0}
 --- !u!114 &3867486598684180960
 MonoBehaviour:
@@ -89,7 +88,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1844328801433658, guid: 9867510fa3e6d11479b56ff45cf8b2ca, type: 3}
       propertyPath: m_Name
-      value: Shield
+      value: Ray Gun
       objectReference: {fileID: 0}
     - target: {fileID: 4249589822194966, guid: 9867510fa3e6d11479b56ff45cf8b2ca, type: 3}
       propertyPath: m_RootOrder
@@ -135,6 +134,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23149943011687542, guid: 9867510fa3e6d11479b56ff45cf8b2ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2ab8410951b5042955598cca68a2a0, type: 2}
+    - target: {fileID: 33085848314403640, guid: 9867510fa3e6d11479b56ff45cf8b2ca,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: aa71617ef84e00e469c8384599d6395a, type: 3}
     - target: {fileID: 114510845023260786, guid: 9867510fa3e6d11479b56ff45cf8b2ca,
         type: 3}
       propertyPath: collectSound
