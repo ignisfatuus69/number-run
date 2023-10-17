@@ -1984,6 +1984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinMultiplier: 1
+  coinSFX: {fileID: 8300000, guid: bd08b4b7e15baf84e9af95527eb5588d, type: 3}
 --- !u!114 &2029709588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2417,7 +2418,7 @@ PrefabInstance:
     - target: {fileID: 6681500929298960050, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_Name
-      value: Shield Object
+      value: Ray Gun
       objectReference: {fileID: 0}
     - target: {fileID: 6681500929298960050, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
