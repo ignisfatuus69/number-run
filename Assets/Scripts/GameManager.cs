@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
         SceneManager.LoadScene("SampleScene");
         playAgainButton.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(true);

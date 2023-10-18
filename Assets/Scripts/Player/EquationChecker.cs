@@ -39,15 +39,18 @@ public class EquationChecker : MonoBehaviour
     public void CheckEquation(int additive, int obstacleNumberValue, int obstacleAdditive)
     {
         AddSum(additive);
+        Debug.Log("curret sum:" + currentSum);
+        Debug.Log("obstacle numbervalue" + obstacleNumberValue);
         textObject.text = currentSum.ToString();
-        if (isImmuneToEquation) return;
         if (currentSum==obstacleNumberValue)
         {
+            Debug.Log("Has selected the correct answer");
             correctAnswers += 1;
             AudioManager.Instance.PlayOneShot(correctSFX);
             cameraShake.ShakeCamera();
             
         }
+        if (isImmuneToEquation) return;
         else
         {
             gameManager.GameOver();
