@@ -15,8 +15,10 @@ public class EquationChecker : MonoBehaviour
     [SerializeField] Text textObject;
     [SerializeField] LayerMask obstacleLayerMask;
     [SerializeField] CameraShake cameraShake;
-
+    [SerializeField] Animator playerCanvasAnimator;
+    private Obstacle currentObstacle;
     private Coroutine raycastCoroutine;
+    private bool hasChangedEquation = false;
     public bool isApproachingObstacle { get; private set; } = false;
     public bool isImmuneToEquation = false;
     public int currentSum { get; private set; } = 0;
@@ -33,6 +35,7 @@ public class EquationChecker : MonoBehaviour
         textObject.text = (currentSum.ToString());
         if (additive>0) OnCurrentSumAdded?.Invoke(additive);
         if (additive < 0) OnCurrentSumDeducted?.Invoke(-additive);
+        hasChangedEquation = false;
 
     }
 
@@ -96,6 +99,7 @@ public class EquationChecker : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(0.25f,0,1)) * 1000, Color.white);
             Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(-0.25f,0,1)) * 1000, Color.white);
+            correctObstacle = null;
             isApproachingObstacle = false;
         }
     }
@@ -104,5 +108,8 @@ public class EquationChecker : MonoBehaviour
     private void UpdateTextEquation(Obstacle obstacleDetected)
     {
         textObject.text = currentSum.ToString() + " + " + obstacleDetected.additive.ToString();
+        if (hasChangedEquation) return;
+        playerCanvasAnimator.SetTrigger("Update");
+        hasChangedEquation = true;
     }
 }
