@@ -20,9 +20,9 @@ public class PowerUpSelector : MonoBehaviour
 
     void SpawnForNextSpawner()
     {
-        Debug.Log("Choosing next power up spawner");
-        int randomNumber = UnityEngine.Random.Range(0, 3);
-        powerUpSpawners[0].SpawnPowerUp();
+        Debug.Log(powerUpSpawners.Length);
+        int randomNumber = UnityEngine.Random.Range(0, powerUpSpawners.Length);
+        powerUpSpawners[randomNumber].SpawnPowerUp();
         Debug.Log("The selected random number for powerup is:" + randomNumber);
     }
     void SpawnShieldOrSlowmo()

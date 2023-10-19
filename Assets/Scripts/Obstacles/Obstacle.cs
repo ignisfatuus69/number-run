@@ -27,7 +27,6 @@ public class Obstacle : MonoBehaviour
 
     public void PlayerInteraction(EquationChecker player)
     {
-        Debug.Log("Obstacle has triggered the checking of the equation");
         player.CheckEquation(this.additive, this.numberValue, this.additive);
         OnPlayerInteraction?.Invoke(this);
     }

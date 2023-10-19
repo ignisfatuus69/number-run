@@ -48,7 +48,8 @@ public class EquationChecker : MonoBehaviour
             correctAnswers += 1;
             AudioManager.Instance.PlayOneShot(correctSFX);
             cameraShake.ShakeCamera();
-            
+            return;
+
         }
         if (isImmuneToEquation) return;
         else
