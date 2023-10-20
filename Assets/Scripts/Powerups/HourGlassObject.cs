@@ -1,12 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldObject : MonoBehaviour
+public class HourGlassObject : MonoBehaviour
 {
     [SerializeField] PowerUpTracker powerUpTrackerObj;
-    [SerializeField] GameObject shieldObj;
+    [SerializeField] GameObject hourGlass;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +15,13 @@ public class ShieldObject : MonoBehaviour
 
     private void SetActive(PowerUp obj)
     {
-        Debug.Log(powerUpTrackerObj.ContainsPowerUp("ShieldPowerUp"));
-        if (powerUpTrackerObj.ContainsPowerUp("ShieldPowerUp")) shieldObj.gameObject.SetActive(true);
+        Debug.Log("This powerup is" + obj.GetType().ToString());
+        Debug.Log(powerUpTrackerObj.ContainsPowerUp("SlowMotionPowerUp"));
+        if (powerUpTrackerObj.ContainsPowerUp("SlowMotionPowerUp")) hourGlass.gameObject.SetActive(true);
     }
 
     void SetInactive(PowerUp powerup)
     {
-        if (powerup.GetType().ToString() == "ShieldPowerUp") shieldObj.gameObject.SetActive(false);
+        if (powerup.GetType().ToString() == "SlowMotionPowerUp") hourGlass.gameObject.SetActive(false);
     }
 }
