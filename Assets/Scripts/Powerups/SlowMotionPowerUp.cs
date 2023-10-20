@@ -66,13 +66,13 @@ public class SlowMotionPowerUp : PowerUp
     {
         while (currentDuration > 0)
         {
-            Debug.Log("Counting down for slow mo");
             yield return new WaitForSeconds(0.1f);
             currentDuration -= 0.1f;
 
             if (currentDuration <= 0)
             {
-                Debug.Log("Slowmo is done");
+                Time.timeScale = 1;
+                Time.fixedDeltaTime = 0.02f;
                 equationCheckerObj.isImmuneToEquation = false;
                 OnSlowMotionEnded?.Invoke(this.gameObject);
                 StopAllCoroutines();
