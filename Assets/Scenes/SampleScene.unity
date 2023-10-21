@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.28033185, g: 0.5912042, b: 0.7620716, a: 1}
+  m_IndirectSpecularColor: {r: 0.28009418, g: 0.59049106, b: 0.7620543, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_bendOn: 1
   m_curveOrigin: {fileID: 963194228}
   m_referenceDirection: {fileID: 963194228}
-  m_curvature: 200
+  m_curvature: 100
   m_xScale: 0.5
   m_zScale: 0.6
   m_flatMargin: 0
