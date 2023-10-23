@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.28009418, g: 0.59049106, b: 0.7620543, a: 1}
+  m_IndirectSpecularColor: {r: 0.28033185, g: 0.5912042, b: 0.7620716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -325,6 +325,29 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 242370771684883685}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &699220409 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5452009994431528887, guid: 5c527a07daecb044db86ed8f8154128f,
+    type: 3}
+  m_PrefabInstance: {fileID: 242370771684883685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &699220411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699220407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e2a2a04c7e2b749bd16e9e5c862dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpName: ShieldPowerUp
+  powerUpDuration: 7
+  startingRateOfFade: 0.2
+  objectToFade: {fileID: 699220409}
+  powerUpTrackerObj: {fileID: 2029709589}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,6 +2067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpTrackerObj: {fileID: 2029709589}
+  fadeOutObj: {fileID: 5287876425906677342}
   shieldObj: {fileID: 699220407}
 --- !u!114 &2029709591
 MonoBehaviour:
@@ -2058,6 +2082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpTrackerObj: {fileID: 2029709589}
+  fadeOutObj: {fileID: 699220411}
   hourGlass: {fileID: 5287876425906677340}
 --- !u!114 &2039843444 stripped
 MonoBehaviour:
@@ -2379,6 +2404,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 385317836}
     m_Modifications:
+    - target: {fileID: 5452009994431528887, guid: 5c527a07daecb044db86ed8f8154128f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5767941862238531409, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_RootOrder
@@ -2457,7 +2487,7 @@ PrefabInstance:
     - target: {fileID: 6681500929298960050, guid: 5c527a07daecb044db86ed8f8154128f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4881686608851447636, guid: 5c527a07daecb044db86ed8f8154128f, type: 3}
@@ -3180,7 +3210,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5287876425906677340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3227,13 +3257,14 @@ GameObject:
   - component: {fileID: 5275591416745294052}
   - component: {fileID: 5206693045145774200}
   - component: {fileID: 5287876425906677341}
+  - component: {fileID: 5287876425906677342}
   m_Layer: 2
   m_Name: HourGlass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &5287876425906677341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3248,6 +3279,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotate: 1
   rotationSpeed: 55
+--- !u!114 &5287876425906677342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287876425906677340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e2a2a04c7e2b749bd16e9e5c862dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpName: SlowMotionPowerUp
+  powerUpDuration: 7
+  startingRateOfFade: 0.2
+  objectToFade: {fileID: 5275591416745294052}
+  powerUpTrackerObj: {fileID: 2029709589}
 --- !u!4 &5290298260729294332
 Transform:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class PowerUpTracker : MonoBehaviour
 {
     public System.Action<PowerUp> OnPowerUpAdded;
     public System.Action<PowerUp> OnPowerUpRemoved;
+    public System.Action<PowerUp> OnResetDuration;
     private List<PowerUp> powerUpList = new List<PowerUp>();
     
     
@@ -16,6 +17,7 @@ public class PowerUpTracker : MonoBehaviour
             if (ContainsPowerUp(powerUpToAdd.GetType().ToString()))
             {
                 powerUpList[i].ResetDuration();
+                OnResetDuration?.Invoke(powerUpToAdd);
                 return;
             }
         }
@@ -36,10 +38,22 @@ public class PowerUpTracker : MonoBehaviour
         {
             if (powerUpName == powerUpList[i].GetType().ToString())
             {
-                powerUpList[i].ResetDuration();
                 return true;
             }
         }
         return false;
+    }
+
+    public PowerUp GetPowerUp(string powerUpName)
+    {
+        if (!ContainsPowerUp(powerUpName)) return null;
+        for (int i = 0; i < powerUpList.Count; i++)
+        {
+            if (powerUpName == powerUpList[i].GetType().ToString())
+            {
+                return powerUpList[i];
+            }
+        }
+        return null;
     }
 }

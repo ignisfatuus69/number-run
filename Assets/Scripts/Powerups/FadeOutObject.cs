@@ -4,22 +4,36 @@ using UnityEngine;
 
 public class FadeOutObject : MonoBehaviour
 {
-    public int objectTime;
-    public int secondsUntilFade;
-    public float rateOfFade;
+    [SerializeField] string powerUpName;
+    public float powerUpDuration;
+    private float secondsUntilFade;
+    private float rateOfFade;
     public float startingRateOfFade=0.2f;
     private float currentObjectTime;
-    [SerializeField] MeshRenderer objectRenderer;
+    [SerializeField] MeshRenderer objectToFade;
+    [SerializeField] PowerUpTracker powerUpTrackerObj;
+
+    private void Start()
+    {
+        powerUpTrackerObj.OnPowerUpAdded += StartFadeCountdown;
+    }
     private void OnEnable()
     {
-        rateOfFade = startingRateOfFade;
-        currentObjectTime = objectTime;
-        StartCoroutine(FadeObject());
+        //StopAllCoroutines();
+        //secondsUntilFade = powerUpDuration /3;
+        //rateOfFade = startingRateOfFade;
+        //currentObjectTime = powerUpDuration;
+        //StartCoroutine(CountDown());
     }
 
-    public void CountDownToFade()
+    public void StartFadeCountdown(PowerUp powerup)
     {
-
+        if (!powerUpTrackerObj.ContainsPowerUp(powerUpName)) return;
+        secondsUntilFade = powerUpDuration / 3;
+        rateOfFade = startingRateOfFade;
+        currentObjectTime = powerUpDuration;
+        StartCoroutine(CountDown());
+        objectToFade.enabled = true;
     }
 
     IEnumerator CountDown()
@@ -30,16 +44,20 @@ public class FadeOutObject : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         StartCoroutine(FadeObject());
+        yield return new WaitForSeconds(secondsUntilFade);
+        StopAllCoroutines();
+        objectToFade.enabled = false;
     }
 
     IEnumerator FadeObject()
     {
         while (true)
         {
-            objectRenderer.enabled = false;
-            yield return new WaitForSeconds(0.5f);
-            Debug.Log("test");
-            objectRenderer.enabled = true;
+            yield return new WaitForSeconds(rateOfFade);
+            objectToFade.enabled = true;
+            yield return new WaitForSeconds(rateOfFade);
+            Debug.Log("testing");
+            objectToFade.enabled = false;
         }
     }
 }
