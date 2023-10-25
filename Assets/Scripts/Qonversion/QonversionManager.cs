@@ -11,7 +11,6 @@ public class QonversionManager : MonoBehaviour
     public Text premiumText;
     public Button premiumButton;
     public Button removeAdsButton;
-    public InterstetialAds intAdsObject;
     public GameManager gameManager;
 
     void Awake()
@@ -50,6 +49,7 @@ public class QonversionManager : MonoBehaviour
                     if (offerings.OfferingForID("Remove_Ads") != null)
                     {
                         removeAdsButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Remove_Ads").Id); });
+                        // initiate check ads permission here
                     }
                 }
                 else
@@ -79,7 +79,7 @@ public class QonversionManager : MonoBehaviour
             if (error == null)
             {
                 premiumText.text = "bought" + productID;
-                CheckAdsPermission(permissions.ToString());
+                //CheckAdsPermission(permissions.ToString());
             }
             else
             {
@@ -90,33 +90,5 @@ public class QonversionManager : MonoBehaviour
                 premiumText.text = "cancelled purchased:  -> " + isCancelled;
             }
         });;
-    }
-
-    public void CheckAdsPermission(string entitlementsId)
-    {
-        Qonversion.GetSharedInstance().CheckEntitlements((permissions, error) =>
-        {
-            if (error == null)
-            {
-                if (permissions.TryGetValue(entitlementsId, out Entitlement plus) && plus.IsActive)
-                {
-                    if (entitlementsId == "Remove_Ads")
-                    {
-                        premiumText.text = "Got the removeads!";
-                        intAdsObject.adsShown = false;
-                    }
-                }
-                else
-                {
-                    if (entitlementsId == "Remove_Ads")
-                    {
-                        intAdsObject.adsShown = true;
-                    }
-                }
-            }
-            else
-            {
-            }
-        });
     }
 }
