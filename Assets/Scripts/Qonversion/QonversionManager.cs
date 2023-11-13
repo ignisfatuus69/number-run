@@ -7,49 +7,52 @@ using UnityEngine.UI;
 
 public class QonversionManager : MonoBehaviour
 {
+    [Header("Qonversion Configuration")]
+    [SerializeField] private string projectKey = "F5fNlvs8EyR9pupP81C91d_Kr9j_1ck0";
+    [SerializeField] private LaunchMode launchMode = LaunchMode.Analytics;
 
-    public Text premiumText;
-    public Button premiumButton;
-    public Button removeAdsButton;
-    public GameManager gameManager;
+    [Header("UI Elements")]
+    [SerializeField] private Text premiumText;
+    //[SerializeField] private Button buyProductsButton;
 
-    void Awake()
+    [Header("Offering Buttons")]
+    [SerializeField] private List<OfferingButton> offeringButtons;
+
+    private void Awake()
     {
-        QonversionConfigBuilder qConfigBuilder = new QonversionConfigBuilder("F5fNlvs8EyR9pupP81C91d_Kr9j_1ck0", LaunchMode.Analytics);
+        QonversionConfigBuilder qConfigBuilder = new QonversionConfigBuilder(projectKey, launchMode);
         QonversionConfig newQConfig = qConfigBuilder.Build();
         Qonversion.Initialize(newQConfig);
-        Debug.Log(newQConfig.ProjectKey);
+
         Qonversion.GetSharedInstance().SyncPurchases();
-        removeAdsButton.onClick.AddListener(() => { PressedBuyProducts(); });
+        //buyProductsButton.onClick.AddListener(() => { PressedBuyProducts(); });
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         premiumText.text = "No Offerings Available";
         ShowOfferings();
     }
 
-    // Update is called once per frame
     public void ShowOfferings()
     {
         premiumText.text = "Getting Offerings";
+
         try
         {
             Qonversion.GetSharedInstance().Offerings((offerings, error) =>
             {
                 premiumText.text = " Offerings";
+
                 if (error == null)
                 {
-                    if (offerings.OfferingForID("Subscription") != null)
+                    foreach (var offeringButton in offeringButtons)
                     {
-                        premiumText.text = "Get the " + offerings.OfferingForID("Subscription").Id + " Subscription";
-                        premiumButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Subscription").Id); });
-                    }
-                    if (offerings.OfferingForID("Remove_Ads") != null)
-                    {
-                        removeAdsButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Remove_Ads").Id); });
-                        // initiate check ads permission here
+                        if (offerings.OfferingForID(offeringButton.offeringID) != null)
+                        {
+                            offeringButton.buttonText.text = "Get the " + offerings.OfferingForID(offeringButton.offeringID).Id;
+                            offeringButton.button.onClick.AddListener(() => { MakePurchase(offeringButton.offeringID); });
+                        }
                     }
                 }
                 else
@@ -60,35 +63,30 @@ public class QonversionManager : MonoBehaviour
         }
         catch
         {
-            premiumText.text = "getting offerings broke";
+            premiumText.text = "Getting offerings broke";
         }
+    }
 
-    }
-    
-    public void PressedBuyProducts()
-    {
-        Debug.Log("Buying");
-    }
 
     public void MakePurchase(string productID)
     {
-        premiumText.text = "buying" + productID;
+        premiumText.text = "Buying " + productID;
 
-        Qonversion.GetSharedInstance().Purchase(productID, (permissions, error,isCancelled) =>
+        Qonversion.GetSharedInstance().Purchase(productID, (permissions, error, isCancelled) =>
         {
             if (error == null)
             {
-                premiumText.text = "bought" + productID;
+                premiumText.text = "Bought " + productID;
                 //CheckAdsPermission(permissions.ToString());
             }
             else
             {
-                premiumText.text = "error -> " + error;
+                premiumText.text = "Error -> " + error;
             }
             if (isCancelled)
             {
-                premiumText.text = "cancelled purchased:  -> " + isCancelled;
+                premiumText.text = "Cancelled purchased:  -> " + isCancelled;
             }
-        });;
+        });
     }
 }

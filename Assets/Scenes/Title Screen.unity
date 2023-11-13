@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.28009418, g: 0.59049106, b: 0.7620543, a: 1}
+  m_IndirectSpecularColor: {r: 0.28270707, g: 0.5940339, b: 0.7621765, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1479,7 +1479,7 @@ GameObject:
   - component: {fileID: 633725546}
   - component: {fileID: 633725545}
   m_Layer: 5
-  m_Name: Check
+  m_Name: Remove Ads Check Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3265,11 +3265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe780b57d5cf87b4b982092b12d228e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectKey: F5fNlvs8EyR9pupP81C91d_Kr9j_1ck0
+  launchMode: 0
   premiumText: {fileID: 239279488}
-  premiumButton: {fileID: 0}
-  removeAdsButton: {fileID: 1723158067}
-  intAdsObject: {fileID: 0}
-  gameManager: {fileID: 0}
+  offeringButtons:
+  - {fileID: 1723158071}
 --- !u!4 &1412916393
 Transform:
   m_ObjectHideFlags: 0
@@ -3601,8 +3601,9 @@ GameObject:
   - component: {fileID: 1723158068}
   - component: {fileID: 1723158067}
   - component: {fileID: 1723158070}
+  - component: {fileID: 1723158071}
   m_Layer: 5
-  m_Name: Remove Ads
+  m_Name: Remove Ads Confirmation Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3725,6 +3726,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 4, y: 4}
   m_UseGraphicAlpha: 1
+--- !u!114 &1723158071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723158065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566493f74698c1e4f823a26e483f7665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offeringID: Remove_Ads
+  buttonText: {fileID: 2070079720}
+  button: {fileID: 1087695680}
 --- !u!1 &1766167357
 GameObject:
   m_ObjectHideFlags: 0
