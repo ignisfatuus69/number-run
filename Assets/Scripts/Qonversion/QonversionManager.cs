@@ -7,11 +7,14 @@ using UnityEngine.UI;
 
 public class QonversionManager : MonoBehaviour
 {
-
     public Text premiumText;
     public Button premiumButton;
     public Button removeAdsButton;
     public GameManager gameManager;
+    private IQonversion qonversionInstance; // Instance of IQonversion
+    public User userInfo;
+    public Text qonversionId;
+    public Text identityId;
 
     void Awake()
     {
@@ -19,8 +22,23 @@ public class QonversionManager : MonoBehaviour
         QonversionConfig newQConfig = qConfigBuilder.Build();
         Qonversion.Initialize(newQConfig);
         Debug.Log(newQConfig.ProjectKey);
-        Qonversion.GetSharedInstance().SyncPurchases();
+        qonversionInstance = Qonversion.GetSharedInstance(); // Initializing the Qonversion instance
+        qonversionInstance.SyncPurchases();
         removeAdsButton.onClick.AddListener(() => { PressedBuyProducts(); });
+        qonversionInstance.UserInfo((user, error) =>
+        {
+            if (error == null)
+            {
+                userInfo = user;
+                Debug.Log("User Info: " + user.QonversionId); // Example usage of retrieved userInfo
+                qonversionId.text = "QonId:" + user.QonversionId;
+                identityId.text = "IdentId:" + user.IdentityId;
+            }
+            else
+            {
+                // Handle error if needed
+            }
+        });
     }
 
     // Start is called before the first frame update
@@ -36,7 +54,7 @@ public class QonversionManager : MonoBehaviour
         premiumText.text = "Getting Offerings";
         try
         {
-            Qonversion.GetSharedInstance().Offerings((offerings, error) =>
+            qonversionInstance.Offerings((offerings, error) =>
             {
                 premiumText.text = " Offerings";
                 if (error == null)
@@ -62,9 +80,8 @@ public class QonversionManager : MonoBehaviour
         {
             premiumText.text = "getting offerings broke";
         }
-
     }
-    
+
     public void PressedBuyProducts()
     {
         Debug.Log("Buying");
@@ -74,7 +91,7 @@ public class QonversionManager : MonoBehaviour
     {
         premiumText.text = "buying" + productID;
 
-        Qonversion.GetSharedInstance().Purchase(productID, (permissions, error,isCancelled) =>
+        qonversionInstance.Purchase(productID, (permissions, error, isCancelled) =>
         {
             if (error == null)
             {
@@ -89,6 +106,6 @@ public class QonversionManager : MonoBehaviour
             {
                 premiumText.text = "cancelled purchased:  -> " + isCancelled;
             }
-        });;
+        }); ;
     }
 }
