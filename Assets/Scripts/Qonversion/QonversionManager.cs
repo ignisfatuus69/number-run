@@ -7,52 +7,67 @@ using UnityEngine.UI;
 
 public class QonversionManager : MonoBehaviour
 {
-    [Header("Qonversion Configuration")]
-    [SerializeField] private string projectKey = "F5fNlvs8EyR9pupP81C91d_Kr9j_1ck0";
-    [SerializeField] private LaunchMode launchMode = LaunchMode.Analytics;
+    public Text premiumText;
+    public Button premiumButton;
+    public Button removeAdsButton;
+    public GameManager gameManager;
+    private IQonversion qonversionInstance; // Instance of IQonversion
+    public User userInfo;
+    public Text qonversionId;
+    public Text identityId;
 
-    [Header("UI Elements")]
-    [SerializeField] private Text premiumText;
-    //[SerializeField] private Button buyProductsButton;
-
-    [Header("Offering Buttons")]
-    [SerializeField] private List<OfferingButton> offeringButtons;
-
-    private void Awake()
+    void Awake()
     {
-        QonversionConfigBuilder qConfigBuilder = new QonversionConfigBuilder(projectKey, launchMode);
+        QonversionConfigBuilder qConfigBuilder = new QonversionConfigBuilder("F5fNlvs8EyR9pupP81C91d_Kr9j_1ck0", LaunchMode.Analytics);
         QonversionConfig newQConfig = qConfigBuilder.Build();
         Qonversion.Initialize(newQConfig);
-
-        Qonversion.GetSharedInstance().SyncPurchases();
-        //buyProductsButton.onClick.AddListener(() => { PressedBuyProducts(); });
+        Debug.Log(newQConfig.ProjectKey);
+        qonversionInstance = Qonversion.GetSharedInstance(); // Initializing the Qonversion instance
+        qonversionInstance.SyncPurchases();
+        removeAdsButton.onClick.AddListener(() => { PressedBuyProducts(); });
+        qonversionInstance.UserInfo((user, error) =>
+        {
+            if (error == null)
+            {
+                userInfo = user;
+                Debug.Log("User Info: " + user.QonversionId); // Example usage of retrieved userInfo
+                qonversionId.text = "QonId:" + user.QonversionId;
+                identityId.text = "IdentId:" + user.IdentityId;
+            }
+            else
+            {
+                // Handle error if needed
+            }
+        });
     }
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         premiumText.text = "No Offerings Available";
         ShowOfferings();
     }
 
+    // Update is called once per frame
     public void ShowOfferings()
     {
         premiumText.text = "Getting Offerings";
-
         try
         {
-            Qonversion.GetSharedInstance().Offerings((offerings, error) =>
+            qonversionInstance.Offerings((offerings, error) =>
             {
                 premiumText.text = " Offerings";
-
                 if (error == null)
                 {
-                    foreach (var offeringButton in offeringButtons)
+                    if (offerings.OfferingForID("Subscription") != null)
                     {
-                        if (offerings.OfferingForID(offeringButton.offeringID) != null)
-                        {
-                            offeringButton.buttonText.text = "Get the " + offerings.OfferingForID(offeringButton.offeringID).Id;
-                            offeringButton.button.onClick.AddListener(() => { MakePurchase(offeringButton.offeringID); });
-                        }
+                        premiumText.text = "Get the " + offerings.OfferingForID("Subscription").Id + " Subscription";
+                        premiumButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Subscription").Id); });
+                    }
+                    if (offerings.OfferingForID("Remove_Ads") != null)
+                    {
+                        removeAdsButton.onClick.AddListener(() => { MakePurchase(offerings.OfferingForID("Remove_Ads").Id); });
+                        // initiate check ads permission here
                     }
                 }
                 else
@@ -63,30 +78,34 @@ public class QonversionManager : MonoBehaviour
         }
         catch
         {
-            premiumText.text = "Getting offerings broke";
+            premiumText.text = "getting offerings broke";
         }
     }
 
+    public void PressedBuyProducts()
+    {
+        Debug.Log("Buying");
+    }
 
     public void MakePurchase(string productID)
     {
-        premiumText.text = "Buying " + productID;
+        premiumText.text = "buying" + productID;
 
-        Qonversion.GetSharedInstance().Purchase(productID, (permissions, error, isCancelled) =>
+        qonversionInstance.Purchase(productID, (permissions, error, isCancelled) =>
         {
             if (error == null)
             {
-                premiumText.text = "Bought " + productID;
+                premiumText.text = "bought" + productID;
                 //CheckAdsPermission(permissions.ToString());
             }
             else
             {
-                premiumText.text = "Error -> " + error;
+                premiumText.text = "error -> " + error;
             }
             if (isCancelled)
             {
-                premiumText.text = "Cancelled purchased:  -> " + isCancelled;
+                premiumText.text = "cancelled purchased:  -> " + isCancelled;
             }
-        });
+        }); ;
     }
 }
